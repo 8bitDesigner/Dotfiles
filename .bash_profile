@@ -17,43 +17,8 @@ alias gitl='git log'
 alias lynx='links'
 alias tidy='tidy -cim -wrap 0 --indent-spaces 4 --tab-size 8 --tidy-mark no --show-warnings 0'
 alias jsl='jsl -nofilelisting -nologo -conf ~/.jslrc'
-alias port='port -uc'
 alias tree='tree -C'
 alias vim='vim -p'
-alias xterm='xterm -r -geometry 90x23 -fa Andale\ Mono -fs 13'
-alias synergy='synergys --config /opt/local/etc/synergy/synergy.conf'
-
-# Normalising port version numbers 
-alias mysql='mysql5'
-alias mysqladmin='mysqladmin5'
-alias python='python2.5'
-
-# Fake Programs
-alias apachectl='sudo /opt/local/apache2/bin/apachectl'
-alias mysqlstart='sudo -v && sudo mysqld_safe5 &'
-alias mysqlstop='mysqladmin -u root -p shutdown'
-alias markdown='perl ~/usr/bin/Markdown.pl'
-alias mini='java -jar ~/usr/bin/yuicompressor-2.4.2.jar' 
-alias minijs='java -jar ~/usr/bin/yuicompressor-2.4.2.jar --type js' 
-alias minicss='java -jar ~/usr/bin/yuicompressor-2.4.2.jar --type css'
-alias node='n use `n --latest`'
-
-# Readline wrappers
-alias js='rlwrap js'
-alias phpa='rlwrap php -a'
-alias java='rlwrap java'
-
-# rsync music: 
-# rsync -rzuv --exclude-from=/Users/paul/Documents/OSXPoo --exclude=iTunes* ~/Music/ 192.168.1.210:~/Music/
-
-
-# =================================================
-# Remote shell logins
-# =================================================
-
-alias dreamhost='ssh wildcard99@8-bitdesign.com'
-alias app1jm1='ssh psweeney@app1v-fe.jm.dev1.gnmedia.net'
-alias deploy='ssh psweeney@deploy.lax3.gnmedia.net'
 
 
 # =================================================
