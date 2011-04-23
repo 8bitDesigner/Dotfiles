@@ -1,0 +1,7 @@
+.localized
+.DS_Store
+.Trash
+.Spotlight*
+.fsevents*
+*.swp
+*.swo

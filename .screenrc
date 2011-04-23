@@ -1,0 +1,9 @@
+shell -bash
+shelltitle ''
+vbell on
+startup_message off
+defscrollback 1000
+
+hardstatus alwayslastline
+hardstatus string "%{= ky}%-Lw%{=r}%20>%n %t%{= ky}%+Lw %{= ky}%-=| %{= kw}%M%d %c%{-} %{=r} ${USER}@%H "
+

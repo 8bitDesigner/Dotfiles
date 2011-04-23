@@ -1,0 +1,33 @@
+[user]
+	name = Paul Sweeney
+	email = paul.sweeney@atomiconline.com
+
+[color]
+	pager = true
+	ui = true
+	status = auto
+	branch = auto
+
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log
+	pom = push origin master
+	cp = cherry-pick
+	stache = stash
+	ftp = !~/Sites/Utilities/git-ftp/git-ftp
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[core] 
+	editor = vim
+	excludesfile = ~/.gitignore
+
+[apply]
+	whitespace = nowarn

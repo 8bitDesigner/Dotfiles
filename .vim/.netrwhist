@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/Paul/Sites/Pebblebed/tests/selenium/tests'
+let g:netrw_dirhist_2='/Users/Paul/Sites/Pebblebed/docroot/components/com_lists'
+let g:netrw_dirhist_3='/Users/Paul/Sites/Pebblebed/docroot/plugins/editors/jckeditor/includes/ckeditor/stylesheet'
+let g:netrw_dirhist_4='/Users/paul/Dropbox/Projects/Adventurer/utils'
+let g:netrw_dirhist_5='/Users/Paul/Desktop'
+let g:netrw_dirhist_6='/Users/Paul/Sites/Pebblebed/scripts/multiple_sites/extensions/plugins/analytics'
