@@ -12,8 +12,6 @@ source ~/.bashrc
 # Default options
 alias ls='ls -G'
 alias la='ls -alsG'
-alias gitk='gitx'
-alias gitl='git log'
 alias lynx='links'
 alias tidy='tidy -cim -wrap 0 --indent-spaces 4 --tab-size 8 --tidy-mark no --show-warnings 0'
 alias jsl='jsl -nofilelisting -nologo -conf ~/.jslrc'
@@ -54,18 +52,14 @@ function prod_merge {
 # =================================================
 
 # nano sucks
-export EDITOR=/opt/local/bin/vim
-export VIM_APP_DIR=/Applications/MacPorts/
-
+export EDITOR=/usr/bin/vim
 
 # Sane history
 export HISTCONTROL=erasedups
 export HISTSIZE=10000
 shopt -s histappend
 
-
 # Colors
-export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1 
 
