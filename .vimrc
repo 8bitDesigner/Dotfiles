@@ -1,4 +1,4 @@
-	" Better colour scheme
+" Better colour scheme
 colorscheme putty
 
 " Activate auto filetype detection
