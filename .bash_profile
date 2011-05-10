@@ -20,8 +20,6 @@ alias jsl='jsl -nofilelisting -nologo -conf ~/.jslrc'
 alias port='port -uc'
 alias tree='tree -C'
 alias vim='vim -p'
-alias xterm='xterm -r -geometry 90x23 -fa Andale\ Mono -fs 13'
-alias synergy='synergys --config /opt/local/etc/synergy/synergy.conf'
 
 # Normalising port version numbers 
 alias mysql='mysql5'
@@ -36,7 +34,6 @@ alias markdown='perl ~/usr/bin/Markdown.pl'
 alias mini='java -jar ~/usr/bin/yuicompressor-2.4.2.jar' 
 alias minijs='java -jar ~/usr/bin/yuicompressor-2.4.2.jar --type js' 
 alias minicss='java -jar ~/usr/bin/yuicompressor-2.4.2.jar --type css'
-alias node='n use `n --latest`'
 
 # Readline wrappers
 alias js='rlwrap js'

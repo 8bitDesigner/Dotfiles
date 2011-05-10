@@ -158,7 +158,6 @@
 +define SWFObject
 +define GiftGuide
 +define FB
-+define require
 +define WebFontConfig
 +define Lawnchair
 +define SWFUpload
@@ -184,7 +183,6 @@
 +define addthis
 +define addthis_config
 +define GA_googleFillSlotWithSize
-+define module
 
 # And Unit tests
 +define jasmine
@@ -209,9 +207,15 @@
 +define reset
 +define spyOn
 
-# Env.js
+# Env.js, Couch, NodeJS
 +define load
 +define Envjs
++define __dirname
++define require
++define process
++define emit
++define module
++define exports
 
 # Coherent library
 +define pkg
