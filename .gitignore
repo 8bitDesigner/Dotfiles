@@ -3,5 +3,6 @@
 .Trash
 .Spotlight*
 .fsevents*
+.sass-cache
 *.swp
 *.swo

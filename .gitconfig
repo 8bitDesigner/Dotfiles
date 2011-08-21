@@ -1,6 +1,6 @@
 [user]
 	name = Paul Sweeney
-	email = paul.sweeney@atomiconline.com
+	email = paul@8-bitdesign.com
 
 [color]
 	pager = true
@@ -28,6 +28,7 @@
 [core] 
 	editor = vim
 	excludesfile = ~/.gitignore
+	autocrlf = input
 
 [apply]
 	whitespace = nowarn
