@@ -1,3 +1,7 @@
+" Prep some variables for use with syntastic syntax checker
+let g:syntastic_auto_loc_list=1
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
 " Init pathogen 
 call pathogen#runtime_append_all_bundles()
 
@@ -11,6 +15,9 @@ colorscheme solarized
 
 " Activate auto filetype detection
 filetype plugin indent on
+au BufRead,BufNewFile *.json set filetype=json
+au BufRead,BufNewFile *.ejs set filetype=php
+
 syntax enable
 runtime macros/matchit.vim
 
@@ -48,6 +55,8 @@ map <leader>m :%!multimarkdown<CR>
 
 " Let's get nerdy
 map <leader>n :NERDTreeToggle<CR>
+nmap <leader>/ :call NERDComment(0, "invert")<CR>
+vmap <leader>/ <ESC>:call NERDComment(1, "invert")<CR>
 
 " Tab/window shortcuts
 map <leader>t :tabnew<CR>
