@@ -1,1 +1,13 @@
+# Notes: "\e" translates to "^["
+#        you can test this via Ctrl+V then your commend sequence
+
+# OSX style delete button
 "\e[3~": delete-char
+
+# Ctrl -> / <- for forward/back word
+"\e[1;9C": forward-word
+"\e[1;9D": backward-word
+
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
