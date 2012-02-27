@@ -4,5 +4,6 @@
 .Spotlight*
 .fsevents*
 .sass-cache
+.netrwhist
 *.swp
 *.swo

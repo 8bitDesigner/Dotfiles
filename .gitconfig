@@ -17,8 +17,13 @@
 	lg = log
 	pom = push origin master
 	cp = cherry-pick
-	stache = stash
-	ftp = !~/Sites/Utilities/git-ftp/git-ftp
+
+	# git glog [searchstring] [branch] :: Searches [branch] for commits matching [searchstring]
+	# =========================================================================================
+	# "!sh -c"                                           :: invokes shell
+	# 'git log --pretty=oneline --reverse $2 | grep $1'  :: passes our string as a shell command
+	# grep $1' -                                         :: tells shell to use $1 instead of $0    
+	glog = !sh -c 'git log --pretty=oneline --reverse $2 | grep $1' -
 
 [color "status"]
 	added = yellow
@@ -29,6 +34,3 @@
 	editor = vim
 	excludesfile = ~/.gitignore
 	autocrlf = input
-
-[apply]
-	whitespace = nowarn
