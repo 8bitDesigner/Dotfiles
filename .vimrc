@@ -5,9 +5,8 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 " Init pathogen 
 call pathogen#runtime_append_all_bundles()
 
-" 256 color term with a keypad
+" 256 color term
 set t_Co=256
-"set term=ansi
 
 " Better colour scheme
 set background=dark
@@ -42,6 +41,9 @@ set mousefocus				" Follow mouse focus
 set clipboard=unnamed		" Use system clipboard for yank/paste
 set wildmenu				" Better edit menu navigation
 set wildmode=full,longest
+set nobackup                " Don't write backup files
+set nowritebackup
+
 
 let mapleader = ","			" Leader mapping
 let g:vimsyn_folding='af'	" Folding settings
@@ -83,6 +85,25 @@ cmap Q q
 " Change indent continuously (Awesome)
 vmap < <gv
 vmap > >gv
+
+"Manually mapping keypad keycodes for iTerm & OSX
+set t_K6=Ok
+set t_K7=Om
+set t_K8=Oo
+set t_K9=Oj
+set t_KA=OM
+set t_KB=On
+set t_KC=Op
+set t_KD=Oq
+set t_KE=Or
+set t_KF=Os
+set t_KG=Ot
+set t_KH=Ou
+set t_KI=Ov
+set t_KJ=Ow
+set t_KK=Ox
+set t_KL=Oy
+imap OX =
 
 
 " Switch between dark and light backgrounds
