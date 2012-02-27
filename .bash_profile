@@ -14,7 +14,6 @@ alias ls='ls -G'
 alias la='ls -alsG'
 alias gitk='gitx'
 alias gitl='git log'
-alias lynx='links'
 alias tidy='tidy -cim -wrap 0 --indent-spaces 4 --tab-size 8 --tidy-mark no --show-warnings 0'
 alias jsl='jsl -nofilelisting -nologo -conf ~/.jslrc'
 alias port='port -uc'
@@ -24,7 +23,6 @@ alias vim='vim -p'
 # Normalising port version numbers 
 alias mysql='mysql5'
 alias mysqladmin='mysqladmin5'
-alias python='python2.5'
 
 # Fake Programs
 alias apachectl='sudo /opt/local/apache2/bin/apachectl'
@@ -34,6 +32,8 @@ alias markdown='perl ~/usr/bin/Markdown.pl'
 alias mini='java -jar ~/usr/bin/yuicompressor-2.4.2.jar' 
 alias minijs='java -jar ~/usr/bin/yuicompressor-2.4.2.jar --type js' 
 alias minicss='java -jar ~/usr/bin/yuicompressor-2.4.2.jar --type css'
+alias android='~/Desktop/android-sdk-mac_x86/tools/emulator -avd Bob -partition-size 128 &'
+alias android_hosts='~/Desktop/android-sdk-mac_x86/platform-tools/adb remount && ~/Desktop/android-sdk-mac_x86/platform-tools/adb push ~/Desktop/android-sdk-mac_x86/platform-tools/hosts /system/etc'
 
 # Readline wrappers
 alias js='rlwrap js'
@@ -51,6 +51,7 @@ alias java='rlwrap java'
 alias dreamhost='ssh wildcard99@8-bitdesign.com'
 alias app1jm1='ssh psweeney@app1v-fe.jm.dev1.gnmedia.net'
 alias deploy='ssh psweeney@deploy.lax3.gnmedia.net'
+alias logs='ssh psweeney@app1v-log.tp.prd.lax.gnmedia.net'
 
 
 # =================================================
@@ -59,25 +60,6 @@ alias deploy='ssh psweeney@deploy.lax3.gnmedia.net'
 
 function bash_git_branch {
 	git branch 2> /dev/null | grep \* | python -c "print ' ('+raw_input()[2:]+')'" 2> /dev/null
-}
-
-function prod_merge {
-	branch=`bash_git_branch | grep -Po "[^\(\)\s]*"`
-	lastCommit=`git log -1 | cut -d' ' -f 2 | head -n1`
-
-	if [ $branch != 'prod' ]; then
-		git svn rebase
-		git svn dcommit
-		git co prod
-	fi
-
-	git svn rebase
-	git cp $lastCommit
-	git svn dcommit
-
-	if [ $branch != 'prod' ]; then
-		git co $branch
-	fi
 }
 
 
