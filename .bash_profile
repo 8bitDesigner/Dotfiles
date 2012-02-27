@@ -29,19 +29,6 @@ alias apachectl='sudo /opt/local/apache2/bin/apachectl'
 alias mysqlstart='sudo -v && sudo mysqld_safe5 &'
 alias mysqlstop='mysqladmin -u root -p shutdown'
 alias markdown='perl ~/usr/bin/Markdown.pl'
-alias mini='java -jar ~/usr/bin/yuicompressor-2.4.2.jar' 
-alias minijs='java -jar ~/usr/bin/yuicompressor-2.4.2.jar --type js' 
-alias minicss='java -jar ~/usr/bin/yuicompressor-2.4.2.jar --type css'
-alias android='~/Desktop/android-sdk-mac_x86/tools/emulator -avd Bob -partition-size 128 &'
-alias android_hosts='~/Desktop/android-sdk-mac_x86/platform-tools/adb remount && ~/Desktop/android-sdk-mac_x86/platform-tools/adb push ~/Desktop/android-sdk-mac_x86/platform-tools/hosts /system/etc'
-
-# Readline wrappers
-alias js='rlwrap js'
-alias phpa='rlwrap php -a'
-alias java='rlwrap java'
-
-# rsync music: 
-# rsync -rzuv --exclude-from=/Users/paul/Documents/OSXPoo --exclude=iTunes* ~/Music/ 192.168.1.210:~/Music/
 
 
 # =================================================
@@ -49,9 +36,13 @@ alias java='rlwrap java'
 # =================================================
 
 alias dreamhost='ssh wildcard99@8-bitdesign.com'
-alias app1jm1='ssh psweeney@app1v-fe.jm.dev1.gnmedia.net'
-alias deploy='ssh psweeney@deploy.lax3.gnmedia.net'
-alias logs='ssh psweeney@app1v-log.tp.prd.lax.gnmedia.net'
+
+mdns_name="141530781.members.btmm.icloud.com."
+macbook="WC-Macbook.$mdns_name"
+macpro="WC-Macpro.$mdns_name"
+
+alias ssh_macbook="ssh $USER@$macbook"
+alias ssh_macpro="ssh $USER@$macpro"
 
 
 # =================================================
@@ -71,18 +62,17 @@ function bash_git_branch {
 export EDITOR=/opt/local/bin/vim
 export VIM_APP_DIR=/Applications/MacPorts/
 
-
 # Sane history
 export HISTCONTROL=erasedups
 export HISTSIZE=10000
 shopt -s histappend
-
 
 # Colors
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1 
 
+# Less > More
 export PAGER="less"
 export LESS="-niSRFX"
 	# n supppres line numbers
@@ -92,17 +82,14 @@ export LESS="-niSRFX"
 	# F quit if one screen
 	# X no init
 
-
 # Commandline customisation
 export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(bash_git_branch)\[\033[01;34m\] \$\[\033[00m\] '
 export MYSQL_PS1="(\u@\h):[\d]> "
-
 
 # Bash completion via MacPorts
 if [ -f /opt/local/etc/bash_completion ]; then
 	. /opt/local/etc/bash_completion
 fi
-
 
 # Autocomplete for SSH hostnames
 complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
