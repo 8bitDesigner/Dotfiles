@@ -1,14 +1,24 @@
 # Set up path info (add MacPorts support)
-my_bin="$HOME/usr/bin"
-macports_bin="/opt/local/bin:/opt/local/sbin"
-export PATH="$my_bin:$macports_bin:$PATH"
+paths="
+$HOME/.gem/ruby/1.8/bin
+$HOME/usr/bin
+$HOME/usr/lib/python2.7/site-packages
+/opt/local/bin
+/opt/local/sbin
+/usr/local/bin"
+
+export PATH="`echo $paths | tr ' ' ':'`:$PATH"
+
 
 # Help files are helpful
-my_man="$HOME/usr/share/man"
-macports_man="/opt/local/man:/opt/local/share/man"
-export MANPATH="$my_man:$macports_man:$MANPATH"
+mans="
+$HOME/usr/share/man
+/opt/local/man
+/opt/local/share/man
+/usr/local/share"
 
-export PYTHONPATH="$HOME/usr/lib/python2.7/site-packages"
+export MANPATH="`echo $mans | tr ' ' ':'`:$MANPATH"
+
 
 export JS_CMD=`which node`
 export NODE_PATH="/Users/paul/usr/lib"
