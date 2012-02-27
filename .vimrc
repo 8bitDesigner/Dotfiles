@@ -2,7 +2,7 @@
 call pathogen#runtime_append_all_bundles()
 
 " Better colour scheme
-set background=light
+set background=dark
 colorscheme solarized
 
 " Activate auto filetype detection
