@@ -21,13 +21,11 @@
 	# git current :: returns current branchname 
 	current = !git branch 2> /dev/null | grep '\\*' | sed -e 's/\\* \\(.*\\)/ (\\1)/'
 
-	# git glog [searchstring] [branch] :: Searches [branch] for commits matching [searchstring]
-	# =========================================================================================
-	# "!sh -c"                                           :: invokes shell
-	# 'git log --pretty=oneline --reverse $2 | grep $1'  :: passes our string as a shell command
-	# grep $1' -                                         :: tells shell to use $1 instead of $0    
-	glog = !sh -c 'git log --pretty=oneline --reverse $2 | grep $1' -
+	# git last [branch] :: returns SHA-1 for the last commit in the specified (or current) branch
+	last = !sh -c 'git log -1 --pretty=oneline $1 | grep -Po "^[0-9a-zA-Z]+"' -
 
+	# git glog [searchstring] [branch] :: Searches [branch] for commits matching [searchstring]
+	glog = !sh -c 'git log --pretty=oneline --reverse $2 | grep $1' -
 
 [color "status"]
 	added = yellow
