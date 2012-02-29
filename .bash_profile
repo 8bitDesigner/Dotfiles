@@ -10,15 +10,13 @@ source ~/.bashrc
 # =================================================
 
 # Default options
-alias ls='ls -G'
-alias la='ls -alsG'
-alias gitk='gitx'
-alias gitl='git log'
-alias tidy='tidy -cim -wrap 0 --indent-spaces 4 --tab-size 8 --tidy-mark no --show-warnings 0'
-alias jsl='jsl -nofilelisting -nologo -conf ~/.jslrc'
+alias ls='ls -G'      # always use colors
+alias la='ls -alsG'   # List all, with colors
+alias gitk='gitx'     # gitx > a separate X server
 alias port='port -uc'
-alias tree='tree -C'
-alias vim='vim -p'
+alias tree='tree -C'  # Tree with colors
+alias vim='vim -p'    # Vim should open multiple files in tabs
+alias vi='vim -p'
 
 # Normalising port version numbers 
 alias mysql='mysql5'
@@ -28,7 +26,6 @@ alias mysqladmin='mysqladmin5'
 alias apachectl='sudo /opt/local/apache2/bin/apachectl'
 alias mysqlstart='sudo -v && sudo mysqld_safe5 &'
 alias mysqlstop='mysqladmin -u root -p shutdown'
-alias markdown='perl ~/usr/bin/Markdown.pl'
 
 
 # =================================================
@@ -40,18 +37,6 @@ alias dreamhost='ssh wildcard99@8-bitdesign.com'
 mdns_name="141530781.members.btmm.icloud.com."
 macbook="WC-Macbook.$mdns_name"
 macpro="WC-Macpro.$mdns_name"
-
-alias ssh_macbook="ssh $USER@$macbook"
-alias ssh_macpro="ssh $USER@$macpro"
-
-
-# =================================================
-# Git utility functions
-# =================================================
-
-function bash_git_branch {
-	git branch 2> /dev/null | grep \* | python -c "print ' ('+raw_input()[2:]+')'" 2> /dev/null
-}
 
 
 # =================================================
@@ -83,7 +68,7 @@ export LESS="-niSRFX"
 	# X no init
 
 # Commandline customisation
-export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(bash_git_branch)\[\033[01;34m\] \$\[\033[00m\] '
+export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(git current)\[\033[01;34m\] \$\[\033[00m\] '
 export MYSQL_PS1="(\u@\h):[\d]> "
 
 # Bash completion via MacPorts
