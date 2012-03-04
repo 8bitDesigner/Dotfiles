@@ -78,3 +78,8 @@ fi
 
 # Autocomplete for SSH hostnames
 complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
+
+# Stupid Unix tricks
+echo ""
+fortune -a 50% all 50% $HOME/fortune 2> /dev/null
+echo ""

@@ -1,14 +1,21 @@
 #! /bin/bash
 
-# changedir into script path
-cd `dirname $0`
+me=`basename $0`
+dir=`dirname $0`
+
+cd $dir
 
 echo "=== Symlinking dotfiles"
-for src in $(find ~/dotfiles -name '.*' -d 1)
-do 
+for src in $(find $PWD -d 1)
+do
 	file=`basename $src`
 
-	if [[ $file != '.git' ]]
+	if [[
+		$file != '.git' &&
+		$file != '.'    &&
+		$file != '..'   &&
+		$file != $me
+	]]
 	then
 		echo "Symlinking $file from $src"
 		ln -Ffs $src ~/
