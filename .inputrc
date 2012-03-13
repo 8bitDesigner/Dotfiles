@@ -11,3 +11,15 @@
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
 
+
+## Better tab completion -- http://blog.sanctum.geek.nz/lazier-tab-completion/
+
+# Single tab complete instead of double-tab complete
+set show-all-if-ambiguous on
+
+# Ignore case when tab completing
+set completion-ignore-case on
+
+# Treat underscores and dashes as the same character
+# when tab-completing
+set completion-map-case on

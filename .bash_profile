@@ -24,6 +24,7 @@ alias mysqladmin='mysqladmin5'
 
 # Fake Programs
 alias apachectl='sudo /opt/local/apache2/bin/apachectl'
+alias apache_restart='sudo port unload apache2 && sudo port load apache2'
 alias mysqlstart='sudo -v && sudo mysqld_safe5 &'
 alias mysqlstop='mysqladmin -u root -p shutdown'
 
