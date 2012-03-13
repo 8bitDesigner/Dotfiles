@@ -95,8 +95,8 @@ elseif s:checker == "jsl"
 
 elseif s:checker == 'jshint'
     function! SyntaxCheckers_javascript_GetLocList()
-        if exists('s:config')
-            let makeprg = 'jshint ' . shellescape(expand("%")) . ' --config ' . s:config
+        if exists('g:syntastic_jshint_config')
+            let makeprg = 'jshint ' . shellescape(expand("%")) . ' --config ' . g:syntastic_jshint_config
         else
             let makeprg = 'jshint ' . shellescape(expand("%"))
         endif

@@ -1,0 +1,21 @@
+{
+  "asi":true
+, "browser":true
+, "nonstandard":true
+, "smarttabs":true
+, "laxbreak":true
+, "laxcomma":true
+, "onecase":true
+, "_":"allow ['string'] better written in dot notation errors"
+, "sub":true
+, "_":"for cruisecontrol we shouldn't fail for this kind of comparison right now"
+, "eqeqeq":false
+, "_":"allow x == null || x != null. shouldn't fail right now"
+, "eqnull":true
+, "_":"we allow an evil eval in ui.js we'll ignore it for now"
+, "evil":true
+, "predef":[
+      "$"
+    , "mint"
+  ]
+}
