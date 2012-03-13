@@ -7,6 +7,11 @@ $HOME/usr/lib/python2.7/site-packages
 /opt/local/sbin
 /usr/local/bin"
 
+if [[ -d "$HOME/Sites/ci" ]]; then
+	paths="$HOME/Sites/ci/bin $paths"
+fi
+
+
 export PATH="`echo $paths | tr ' ' ':'`:$PATH"
 
 
