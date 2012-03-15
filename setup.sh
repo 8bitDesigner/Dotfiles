@@ -11,9 +11,10 @@ do
 	file=`basename $src`
 
 	if [[
-		$file != '.git' &&
-		$file != '.'    &&
-		$file != '..'   &&
+		$file != '.git'   &&
+		$file != '.'      &&
+		$file != '..'     &&
+		$file != 'osx.sh' &&
 		$file != $me
 	]]
 	then
@@ -22,5 +23,11 @@ do
 	fi
 done
 
+# Configure OSX settings
+echo "=== Setting OSX options"
+./osx.sh
+
 # Resume previous directory
-cd -
+cd - > /dev/null
+
+echo "=== Done!"
