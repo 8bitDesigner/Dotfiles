@@ -6,7 +6,7 @@ dir=`dirname $0`
 cd $dir
 
 echo "=== Symlinking dotfiles"
-for src in $(find $PWD -d 1)
+for src in $(find $PWD -maxdepth 1)
 do
 	file=`basename $src`
 

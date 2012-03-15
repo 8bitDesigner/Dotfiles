@@ -1,6 +1,11 @@
 #! /bin/bash
 # Shamelessly stolen from https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
+
+if [[ ! "$OSTYPE" =~ 'darwin' ]]
+then exit 1
+fi
+
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
