@@ -3,6 +3,9 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_jshint_config = '~/.jshintrc'
 
+" Pointless waste of time plugins
+let g:twitvim_count = 70
+
 " Init pathogen 
 call pathogen#runtime_append_all_bundles()
 
@@ -51,7 +54,7 @@ let g:vimsyn_folding='af'	" Folding settings
 
 
 " Search in files
-map <C-T> :Ack 
+"map <C-T> :Ack 
 
 " Pipe current document through markdown
 map <leader>m :%!multimarkdown<CR>
