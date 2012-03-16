@@ -4,12 +4,17 @@
 # OSX style delete button
 "\e[3~": delete-char
 
-# Ctrl -> / <- for forward/back word
-"\e[1;9C": forward-word
-"\e[1;9D": backward-word
+# Option -> / <- for forward/back word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
 
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
+
+
+# VIM-style ^W -- http://shallowsky.com/blog/linux/bash-word-erase.html
+set bind-tty-special-chars Off
+"\C-w": backward-kill-word
 
 
 ## Better tab completion -- http://blog.sanctum.geek.nz/lazier-tab-completion/

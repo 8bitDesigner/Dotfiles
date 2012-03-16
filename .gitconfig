@@ -18,6 +18,7 @@
 	pom = push origin master
 	cp = cherry-pick
 	sub = submodule
+	subup = submodule update
 
 	# git current :: returns current branchname 
 	current = !git branch 2> /dev/null | grep '\\*' | sed -e 's/\\* \\(.*\\)/ (\\1)/'
