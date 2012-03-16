@@ -33,8 +33,6 @@ alias mysqlstop='mysqladmin -u root -p shutdown'
 # Remote shell logins
 # =================================================
 
-alias dreamhost='ssh wildcard99@8-bitdesign.com'
-
 mdns_name="141530781.members.btmm.icloud.com."
 macbook="WC-Macbook.$mdns_name"
 macpro="WC-Macpro.$mdns_name"
