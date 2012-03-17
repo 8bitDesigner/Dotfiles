@@ -90,6 +90,12 @@ cmap Q q
 vmap < <gv
 vmap > >gv
 
+"Mapping option left/right
+map  [C w
+map  [D b
+imap [C wa
+imap [D bi
+
 "Manually mapping keypad keycodes for iTerm & OSX
 set t_K6=Ok
 set t_K7=Om
@@ -107,7 +113,6 @@ set t_KI=Ov
 set t_KJ=Ow
 set t_KK=Ox
 set t_KL=Oy
-imap OX =
 
 
 " Switch between dark and light backgrounds
