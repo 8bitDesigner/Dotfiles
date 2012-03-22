@@ -46,10 +46,13 @@ macpro="WC-Macpro.$mdns_name"
 export EDITOR=/opt/local/bin/vim
 export VIM_APP_DIR=/Applications/MacPorts/
 
-# Sane history
-export HISTCONTROL=erasedups
-export HISTSIZE=10000
-shopt -s histappend
+# Sane history -- http://blog.sanctum.geek.nz/better-bash-history/
+shopt -s histappend                      # Append to .bash_history - don't rewrite
+unset HISTFILESIZE                       # Record fugging everything
+HISTSIZE=1000000
+HISTCONTROL=ignoreboth                   # Ignore dupe commands, and commands starting with a space
+HISTIGNORE='ls:bg:fg:history:jobs'       # Ignore the output of common commands
+PROMPT_COMMAND='history -a; history -n'  # Record history after each command, not terminal close
 
 # Colors
 export TERM=xterm-color
