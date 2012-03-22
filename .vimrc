@@ -18,8 +18,8 @@ colorscheme solarized
 
 " Activate auto filetype detection
 filetype plugin indent on
-au BufRead,BufNewFile *.json set filetype=json
-au BufRead,BufNewFile *.ejs set filetype=php
+au BufRead,BufNewFile *.json set filetype=js
+au BufRead,BufNewFile *.ejs  set filetype=php
 
 syntax enable
 runtime macros/matchit.vim
@@ -40,14 +40,15 @@ set bs=2					" Backspace like the good lord intended
 set imd						" Disable the input manager, which seems to hate Dvorak.
 set ff=unix					" Read/Write/Breathe Unix
 set scrolloff=3				" Keep 3 lines of context around the cursor whens scrolling
-set mouse=a					" Use mouse in normal and visual modes
-set mousefocus				" Follow mouse focus
 set clipboard=unnamed		" Use system clipboard for yank/paste
 set wildmenu				" Better edit menu navigation
 set wildmode=full,longest
-set nobackup                " Don't write backup files
-set nowritebackup
+set directory=~/.vim/swp
+set undodir=~/.vim/undo
 
+set mouse=a					" Use mouse in normal and visual modes
+set mousefocus				" Follow mouse focus
+set ttymouse=xterm2         " Mouse + tmux/screen == happy
 
 let mapleader = ","			" Leader mapping
 let g:vimsyn_folding='af'	" Folding settings
