@@ -18,7 +18,7 @@ alias tree='tree -C'  # Tree with colors
 alias vim='vim -p'    # Vim should open multiple files in tabs
 alias vi='vim -p'
 
-# Normalising port version numbers 
+# Normalising port version numbers
 alias mysql='mysql5'
 alias mysqladmin='mysqladmin5'
 
@@ -55,9 +55,16 @@ HISTIGNORE='ls:bg:fg:history:jobs'       # Ignore the output of common commands
 PROMPT_COMMAND='history -a; history -n'  # Record history after each command, not terminal close
 
 # Colors
-export TERM=xterm-color
+if [[ -n $TMUX ]]; then
+	export TERM='screen-256color'
+elif [[ -e /usr/share/terminfo/*/xterm-256color ]]; then
+	export TERM='xterm-256color'
+else
+	export TERM='xterm-color'
+fi
+
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-export CLICOLOR=1 
+export CLICOLOR=1
 
 # Less > More
 export PAGER="less"
@@ -81,7 +88,19 @@ fi
 # Autocomplete for SSH hostnames
 complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
 
+
+# =================================================
+# Login messages
+# =================================================
+
 # Stupid Unix tricks
 echo ""
 fortune -a 50% all 50% $HOME/fortune 2> /dev/null
 echo ""
+
+# Show running tmux sessions
+if [[ -z "$TMUX" && -n "`which tmux`" ]]
+then
+	echo ":: Running tmux sessions ::"
+	tmux ls 2> /dev/null
+fi

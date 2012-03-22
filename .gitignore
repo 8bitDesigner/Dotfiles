@@ -7,3 +7,4 @@
 .netrwhist
 *.swp
 *.swo
+.vim/swp
