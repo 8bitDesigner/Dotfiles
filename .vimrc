@@ -31,6 +31,8 @@ set nowrap					" No fake carriage returns
 set showcmd					" Show command in statusline as it's being typed
 set showmatch				" Jump to matching bracket
 set ruler					" Show row,col %progress through file
+set statusline=%t%h%m%r%=[%b\ 0x%02B]\ \ \ %l,%c%V\ %P
+set laststatus=2
 set softtabstop=4			" Vim sees 4 spaces as a tab
 set shiftwidth=4			" < and > uses spaces
 set tabstop=4				" 4-space indents
@@ -44,7 +46,14 @@ set clipboard=unnamed		" Use system clipboard for yank/paste
 set wildmenu				" Better edit menu navigation
 set wildmode=full,longest
 set directory=~/.vim/swp
-set undodir=~/.vim/undo
+
+" Persistent undo - http://amix.dk/blog/post/19548
+if version >= 703
+	set undofile
+	set undodir=~/.vim/undo
+	set undolevels=1000
+	set undoreload=10000
+endif
 
 set mouse=a					" Use mouse in normal and visual modes
 set mousefocus				" Follow mouse focus
@@ -92,10 +101,14 @@ vmap < <gv
 vmap > >gv
 
 "Mapping option left/right
-map  [C w
-map  [D b
-imap [C wa
-imap [D bi
+map  [C  w
+map  [D  b
+map  [1;3C w
+map  [1;3D b
+imap [C  wa
+imap [D  bi
+imap [1;3C wa
+imap [1;3D bi
 
 "Manually mapping keypad keycodes for iTerm & OSX
 set t_K6=Ok
