@@ -101,10 +101,14 @@ vmap < <gv
 vmap > >gv
 
 "Mapping option left/right
-map  [C w
-map  [D b
-imap [C wa
-imap [D bi
+map  [C  w
+map  [D  b
+map  [1;3C w
+map  [1;3D b
+imap [C  wa
+imap [D  bi
+imap [1;3C wa
+imap [1;3D bi
 
 "Manually mapping keypad keycodes for iTerm & OSX
 set t_K6=Ok

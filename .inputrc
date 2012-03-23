@@ -5,10 +5,10 @@
 "\e[3~": delete-char
 
 # Option -> / <- for forward/back word
-"\e\e[C": forward-word
-"\e\e[D": backward-word
-"\e;3C":  forward-word
-"\e;3D":  backward-word
+"\e\e[C":  forward-word
+"\e\e[D":  backward-word
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
 
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
