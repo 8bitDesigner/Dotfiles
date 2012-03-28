@@ -25,6 +25,16 @@ $HOME/usr/share/man
 export MANPATH="`echo $mans | tr ' ' ':'`:$MANPATH"
 
 
+# When you cd, we're going to search these directories
+cds="
+.
+~
+~/Sites
+"
+
+export CDPATH="`echo $cds | tr ' ' ':'`:$CDPATH"
+
+
 export JS_CMD=`which node`
 export NODE_PATH="/Users/paul/usr/lib"
 export N_PREFIX="$HOME/usr/node_versions"
