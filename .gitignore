@@ -5,7 +5,6 @@
 .fsevents*
 .sass-cache
 .netrwhist
-*.swp
-*.swo
-.vim/undo
+*.sw?
 .vim/swp
+.vim/undo

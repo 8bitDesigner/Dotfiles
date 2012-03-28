@@ -18,7 +18,7 @@ colorscheme solarized
 
 " Activate auto filetype detection
 filetype plugin indent on
-au BufRead,BufNewFile *.json set filetype=js
+au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.ejs  set filetype=php
 
 syntax enable
