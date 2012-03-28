@@ -12,6 +12,8 @@ source ~/.bashrc
 # First set up our terminal as xterm
 if [[ -n `find /usr/share/terminfo -name 'xterm-256color'` ]]; then
 	export TERM='xterm-256color'
+elif [[ -n `find /lib/terminfo -name 'xterm-256color'` ]]; then
+	export TERM='xterm-256color'
 else
 	export TERM='xterm-color'
 fi
