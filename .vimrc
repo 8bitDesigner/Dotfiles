@@ -47,6 +47,10 @@ set wildmenu				" Better edit menu navigation
 set wildmode=full,longest
 set directory=~/.vim/swp
 
+" Omni completion
+set ofu=syntaxcomplete#Complete " *shrug*
+set completeopt=longest,menuone " Show longest match, and always show, at lest one option
+
 " Persistent undo - http://amix.dk/blog/post/19548
 if version >= 703
 	set undofile
