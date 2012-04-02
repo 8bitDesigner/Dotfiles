@@ -1,5 +1,7 @@
 #! /bin/bash
-# Shamelessly stolen from https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+# Shamelessly stolen from 
+# https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+# https://gist.github.com/2260182
 
 
 if [[ ! "$OSTYPE" =~ 'darwin' ]]
@@ -11,6 +13,12 @@ chflags nohidden ~/Library
 
 # Enable the 2D Dock
 defaults write com.apple.dock no-glass -bool true
+
+# Enable iTunes track notifications in the Dock
+defaults write com.apple.dock itunes-notifications -bool true
+
+# Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Disable menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
