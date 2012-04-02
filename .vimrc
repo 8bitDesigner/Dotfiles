@@ -49,7 +49,7 @@ set directory=~/.vim/swp
 
 " Omni completion
 set ofu=syntaxcomplete#Complete " *shrug*
-set completeopt=longest,menuone " Show longest match, and always show, at lest one option
+set completeopt=longest			" Show longest match, and always show, at lest one option
 
 " Persistent undo - http://amix.dk/blog/post/19548
 if version >= 703
@@ -68,10 +68,11 @@ let g:vimsyn_folding='af'	" Folding settings
 
 
 " Search in files
-"map <C-T> :Ack 
+map <leader>t :Ack
 
 " Pipe current document through markdown
 map <leader>m :%!multimarkdown<CR>
+
 
 " Let's get nerdy
 map <leader>n :NERDTreeToggle<CR>
@@ -79,7 +80,6 @@ nmap <leader>/ :call NERDComment(0, "invert")<CR>
 vmap <leader>/ <ESC>:call NERDComment(1, "invert")<CR>
 
 " Tab/window shortcuts
-map <leader>t :tabnew<CR>
 map <leader>] :tabn<CR>
 map <leader>[ :tabp<CR>
 
