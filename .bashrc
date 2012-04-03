@@ -9,8 +9,8 @@ $HOME/usr/lib/python2.7/site-packages
 
 if [[ -d "$HOME/Sites/ci" ]]; then
 	paths="$HOME/Sites/ci/bin $paths"
+	paths="/Users/dev/Sites/ci/phpunit-git-deploy/bin $paths"
 fi
-
 
 export PATH="`echo $paths | tr ' ' ':'`:$PATH"
 

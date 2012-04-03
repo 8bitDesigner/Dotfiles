@@ -20,7 +20,7 @@
 	sub = submodule
 	subup = submodule update
 
-	close = !sh -c 'git br -D $1 && git push origin :$1' -
+	close = !sh -c 'git br -d $1 && git push origin :$1' -
 
 	# git current :: returns current branchname 
 	current = !git branch 2> /dev/null | grep '\\*' | sed -e 's/\\* \\(.*\\)/ (\\1)/'

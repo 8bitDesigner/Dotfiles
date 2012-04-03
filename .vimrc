@@ -31,7 +31,7 @@ set nowrap					" No fake carriage returns
 set showcmd					" Show command in statusline as it's being typed
 set showmatch				" Jump to matching bracket
 set ruler					" Show row,col %progress through file
-set statusline=%t%h%m%r%=[%b\ 0x%02B]\ \ \ %l,%c%V\ %P
+set statusline=%f%h%m%r%=[%b\ 0x%02B]\ \ \ %l,%c%V\ %P
 set laststatus=2
 set softtabstop=4			" Vim sees 4 spaces as a tab
 set shiftwidth=4			" < and > uses spaces
@@ -68,7 +68,7 @@ let g:vimsyn_folding='af'	" Folding settings
 
 
 " Search in files
-map <leader>t :Ack
+map <leader>t :Ack! 
 
 " Pipe current document through markdown
 map <leader>m :%!multimarkdown<CR>
