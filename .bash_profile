@@ -54,7 +54,8 @@ export LESS="-niSRFX"
 	# X no init
 
 # Commandline customisation
-export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(git current)\[\033[01;34m\] \$\[\033[00m\] '
+function current { branch=`git current`; if [[ -n $branch ]]; then echo " ($branch)"; fi }
+export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\[\033[01;34m\] \$\[\033[00m\] '
 export MYSQL_PS1="(\u@\h):[\d]> "
 
 # Bash completion via MacPorts
