@@ -48,7 +48,7 @@ set wildmode=full,longest
 set directory=~/.vim/swp
 
 " Omni completion
-set ofu=syntaxcomplete#Complete " *shrug*
+set ofu=syntaxcomplete#Complete " Enable syntax completion?
 set completeopt=longest			" Show longest match, and always show, at lest one option
 
 " Persistent undo - http://amix.dk/blog/post/19548
