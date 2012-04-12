@@ -21,7 +21,10 @@
 	subup = submodule update --recursive
 
 	# git close [branchname] :: deletes the branch locally and on origin
-	close = !sh -c 'git br -d $1 && git push origin :$1' -
+	close = !sh -c 'git branch -d $1 && git push origin :$1' -
+
+	# git closeall :: closes all merged branches, save for master and release
+	closeall = !"for i in $(git branch | sed 's/^..//'); do if [[ $i != 'master' && $i != 'release' ]]; then git close $i; fi; done"
 
 	# git mod :: returns list of modified/added files
 	mod = !"git status --porcelain | awk '/\\s?(M|A)/ {print $2}'"
