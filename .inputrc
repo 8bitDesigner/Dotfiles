@@ -10,6 +10,12 @@
 "\e[1;3C": forward-word
 "\e[1;3D": backward-word
 
+# Control -> / <- beginning/end of line
+"\e\e5D": beginning-of-line
+"\e\e5C": end-of-line
+"\e[1;5D": beginning-of-line
+"\e[1;5C": end-of-line
+
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
 
