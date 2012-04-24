@@ -20,8 +20,7 @@ colorscheme solarized
 filetype plugin indent on
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.ejs  set filetype=php
-au BufRead,BufNewFile :call Entab(4)
-au BufRead,BufNewFile *.ejs,*.js,*.coffee,*.json :call Entab(2)
+au BufRead,BufNewFile * :call Entab(2)
 au FileType nerdtree,taglist,qf setlocal nornu
 
 syntax enable
@@ -52,11 +51,17 @@ set rnu                   " Relative line numbering
 function! Entab(spaces)
     " softtabstop: treat x spaces as a tab character
     " shiftwidth: number of spaces to use while indenting
+    execute "set tabstop=".a:spaces
     execute "set softtabstop=".a:spaces
     execute "set shiftwidth=".a:spaces
     set expandtab " expand <Tab> key to a:spaces
 endfunction
 
+
+" Highlight tabs, and shortcut to show/hide tabs
+set listchars=tab:▸\ 
+set list
+nmap <leader>l :set list!<CR>
 
 " Omni completion
 set ofu=syntaxcomplete#Complete " Enable syntax completion?
@@ -83,7 +88,7 @@ let g:vimsyn_folding='af'   " Folding settings
 
 " Search in files
 map <leader>t :Ack! 
-s
+
 " Pipe current document through markdown
 map <leader>m :%!multimarkdown<CR>
 

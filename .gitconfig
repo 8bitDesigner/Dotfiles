@@ -22,6 +22,7 @@
 
 	# git close [branchname] :: deletes the branch locally and on origin
 	close = !sh -c 'git branch -d $1 && git push origin :$1' -
+	close-force = !sh -c 'git branch -D $1 && git push origin :$1' -
 
 	# git closeall :: closes all merged branches, save for master and release
 	closeall = !"for i in $(git branch | sed 's/^..//'); do if [[ $i != 'master' && $i != 'release' ]]; then git close $i; fi; done"
@@ -38,6 +39,10 @@
 	# git glog [searchstring] [branch] :: Searches [branch] for commits matching [searchstring]
 	grep = !sh -c 'git log --pretty=oneline --reverse $2 | grep $1' -
 
+	pushhub = !"git push origin `git current`"
+	pushub = pushhub
+	hubpush = pushhub
+
 [color "status"]
 	added = yellow
 	changed = green
@@ -47,5 +52,11 @@
 	editor = vim
 	excludesfile = ~/.gitignore
 	autocrlf = input
+
 [rerere]
 	enabled = 1
+
+[credential]
+  # Grab from here, add to path: 
+  # http://github-media-downloads.s3.amazonaws.com/osx/git-credential-osxkeychain
+	helper = osxkeychain
