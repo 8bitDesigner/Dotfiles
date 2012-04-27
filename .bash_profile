@@ -100,6 +100,7 @@ alias mysqlstop='mysqladmin -u root -p shutdown'
 mdns_name="141530781.members.btmm.icloud.com."
 macbook="WC-Macbook.$mdns_name"
 macpro="WC-Macpro.$mdns_name"
+work="BM-PSweeney.$mdns_name"
 
 
 # =================================================
