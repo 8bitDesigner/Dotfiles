@@ -65,7 +65,7 @@ nmap <leader>l :set list!<CR>
 " Highlight tabs, and shortcut to show/hide tabs
 set listchars=tab:▸\ 
 set list
-nmap <leader>l :set list!<CR>
+map <leader>l :set list!<CR>
 
 " Omni completion
 set ofu=syntaxcomplete#Complete " Enable syntax completion?

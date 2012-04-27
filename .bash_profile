@@ -80,6 +80,7 @@ alias tree='tree -C'  # Tree with colors
 alias vim='vim -p'    # Vim should open multiple files in tabs
 alias vi='vim -p'
 alias pine='alpine'
+alias g='git'
 
 # Normalising port version numbers
 alias mysql='mysql5'

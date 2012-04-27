@@ -43,6 +43,9 @@
 	pushub = pushhub
 	hubpush = pushhub
 
+	# list tags chronologically 
+	rtag = tag -l *12[a-z]
+
 [color "status"]
 	added = yellow
 	changed = green
@@ -55,8 +58,5 @@
 
 [rerere]
 	enabled = 1
-
 [credential]
-  # Grab from here, add to path: 
-  # http://github-media-downloads.s3.amazonaws.com/osx/git-credential-osxkeychain
 	helper = osxkeychain
