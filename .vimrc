@@ -57,6 +57,10 @@ function! Entab(spaces)
     set expandtab " expand <Tab> key to a:spaces
 endfunction
 
+set listchars=tab:▸\ 
+set list
+nmap <leader>l :set list!<CR>
+
 
 " Highlight tabs, and shortcut to show/hide tabs
 set listchars=tab:▸\ 
