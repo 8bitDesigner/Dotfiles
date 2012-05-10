@@ -46,6 +46,13 @@ set wildmenu              " Better edit menu navigation
 set wildmode=full,longest " Configure autocomplete list for fs navigation
 set directory=~/.vim/swp  " Single location for swap files
 set rnu                   " Relative line numbering
+set mouse=a               " Use mouse in normal and visual modes
+set mousefocus            " Follow mouse focus
+set ttymouse=xterm2       " Mouse + tmux/screen == happy
+
+let mapleader = ","         " Leader mapping
+let g:vimsyn_folding='af'   " Folding settings
+
 
 " Tabs and spaces
 function! Entab(spaces)
@@ -57,15 +64,18 @@ function! Entab(spaces)
     set expandtab " expand <Tab> key to a:spaces
 endfunction
 
+" Highlighting trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+au ColorScheme * highlight ExtraWhitespace guibg=red
+au BufEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+$/
+
+" Show invisibles setting and toggle
 set listchars=tab:▸\ 
 set list
 nmap <leader>l :set list!<CR>
 
-
-" Highlight tabs, and shortcut to show/hide tabs
-set listchars=tab:▸\ 
-set list
-map <leader>l :set list!<CR>
 
 " Omni completion
 set ofu=syntaxcomplete#Complete " Enable syntax completion?
@@ -81,13 +91,6 @@ if version >= 703
     " highlight line 80
     set colorcolumn=80
 endif
-
-set mouse=a                 " Use mouse in normal and visual modes
-set mousefocus              " Follow mouse focus
-set ttymouse=xterm2         " Mouse + tmux/screen == happy
-
-let mapleader = ","         " Leader mapping
-let g:vimsyn_folding='af'   " Folding settings
 
 
 " Search in files

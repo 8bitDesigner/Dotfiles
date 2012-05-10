@@ -30,20 +30,22 @@
 	# git mod :: returns list of modified/added files
 	mod = !"git status --porcelain | awk '/\\s?(M|A)/ {print $2}'"
 
-	# git current :: returns current branchname 
-	current = !git branch 2> /dev/null | grep '\\*' | sed -e 's/\\* \\(.*\\)/\\1/'
-
 	# git last [branch] :: returns SHA-1 for the last commit in the specified (or current) branch
 	last = !sh -c 'git log -1 --pretty=oneline $1 | grep -Po "^[0-9a-zA-Z]+"' -
 
 	# git glog [searchstring] [branch] :: Searches [branch] for commits matching [searchstring]
 	grep = !sh -c 'git log --pretty=oneline --reverse $2 | grep $1' -
 
-	pushhub = !"git push origin `git current`"
-	pushub = pushhub
-	hubpush = pushhub
+	# git current :: returns current branchname
+	current = !git branch 2> /dev/null | grep '\\*' | sed -e 's/\\* \\(.*\\)/\\1/'
 
-	# list tags chronologically 
+	# git pushup :: push current branch to origin (usually github)
+	pushup = !"git push origin `git current`"
+
+	# git curtag :: fetch the latest tag in the current repo
+	curtag = !"git fetch --tags > /dev/null && git rtag | tail -n1"
+
+	# list tags chronologically
 	rtag = tag -l *12[a-z]
 
 [color "status"]
@@ -51,7 +53,7 @@
 	changed = green
 	untracked = cyan
 
-[core] 
+[core]
 	editor = vim
 	excludesfile = ~/.gitignore
 	autocrlf = input

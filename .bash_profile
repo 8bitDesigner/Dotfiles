@@ -28,8 +28,8 @@ fi
 # Default bash stuff
 # =================================================
 
-# nano sucks
 export EDITOR=/opt/local/bin/vim
+export BROWSER=/usr/bin/open
 export VIM_APP_DIR=/Applications/MacPorts/
 
 # Sane history -- http://blog.sanctum.geek.nz/better-bash-history/
