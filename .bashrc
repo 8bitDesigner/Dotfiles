@@ -12,6 +12,10 @@ if [[ -d "$HOME/Sites/ci" ]]; then
 	paths="/Users/dev/Sites/ci/phpunit-git-deploy/bin $paths"
 fi
 
+if [[ -d "$HOME/Sites/cli" ]]; then
+	paths="$HOME/Sites/cli/bin $paths"
+fi
+
 export PATH="`echo $paths | tr ' ' ':'`:$PATH"
 
 
@@ -33,8 +37,4 @@ cds="
 "
 
 export CDPATH="`echo $cds | tr ' ' ':'`:$CDPATH"
-
-
 export JS_CMD=`which node`
-export NODE_PATH="/Users/paul/usr/lib"
-export N_PREFIX="$HOME/usr/node_versions"
