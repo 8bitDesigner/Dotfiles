@@ -11,10 +11,11 @@ do
 	file=`basename $src`
 
 	if [[
-		$file != '.git'   &&
-		$file != '.'      &&
-		$file != '..'     &&
-		$file != 'osx.sh' &&
+		$file != '.git'                  &&
+		$file != '.'                     &&
+		$file != '..'                    &&
+		$file != 'osx.sh'                &&
+		$file != 'QLStephen.qlgenerator' &&
 		$file != $me
 	]]
 	then
@@ -25,7 +26,7 @@ done
 
 # Configure OSX settings
 echo "=== Setting OSX options"
-./osx.sh
+./osx.sh $dir
 
 # Resume previous directory
 cd - > /dev/null

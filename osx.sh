@@ -8,6 +8,9 @@ if [[ ! "$OSTYPE" =~ 'darwin' ]]
 then exit 1
 fi
 
+# Copy our plaintext quicklook plugin into place
+mkdir -p ~/Library/QuickLook/
+cp -R $1/QLStephen.qlgenerator ~/Library/QuickLook
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
