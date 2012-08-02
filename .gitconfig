@@ -48,6 +48,9 @@
 	# list tags chronologically
 	rtag = tag -l *12[a-z]
 
+	# push code directly to master
+	pullup = !"git fetch && git rebase && git pushup"
+
 [color "status"]
 	added = yellow
 	changed = green
