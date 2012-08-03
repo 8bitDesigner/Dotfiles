@@ -28,9 +28,12 @@ fi
 # Default bash stuff
 # =================================================
 
-export EDITOR=/opt/local/bin/vim
-export BROWSER=/usr/bin/open
-export VIM_APP_DIR=/Applications/MacPorts/
+export EDITOR=`which vim`
+
+if [[ ! "$OSTYPE" =~ 'darwin' ]]; then
+  export BROWSER=/usr/bin/open
+  export VIM_APP_DIR=/Applications/MacPorts/
+fi
 
 # Sane history -- http://blog.sanctum.geek.nz/better-bash-history/
 shopt -s histappend                      # Append to .bash_history - don't rewrite
@@ -60,7 +63,7 @@ export MYSQL_PS1="(\u@\h):[\d]> "
 
 # Bash completion via MacPorts
 if [ -f /opt/local/etc/bash_completion ]; then
-	. /opt/local/etc/bash_completion
+  . /opt/local/etc/bash_completion
 fi
 
 # Autocomplete for SSH hostnames
@@ -74,34 +77,34 @@ complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g
 # Default options
 alias ls='ls -G'      # always use colors
 alias la='ls -alsG'   # List all, with colors
-alias gitk='gitx'     # gitx > a separate X server
-alias port='port -uc'
-alias tree='tree -C'  # Tree with colors
 alias vim='vim -p'    # Vim should open multiple files in tabs
 alias vi='vim -p'
 alias pine='alpine'
 alias g='git'
 
-# Normalising port version numbers
-alias mysql='mysql5'
-alias mysqladmin='mysqladmin5'
+if [[ ! "$OSTYPE" =~ 'darwin' ]]; then
+  alias port='port -uc'
+  alias tree='tree -C'  # Tree with colors
+  alias apachectl='sudo /opt/local/apache2/bin/apachectl'
+  alias apache_restart='sudo port unload apache2 && sudo port load apache2'
+  alias mysqlstart='sudo -v && sudo mysqld_safe5 &'
+  alias mysqlstop='mysqladmin -u root -p shutdown'
+  alias mysql='mysql5' # Normalising port version numbers
+  alias mysqladmin='mysqladmin5'
+fi
 
-# Fake Programs
-alias apachectl='sudo /opt/local/apache2/bin/apachectl'
-alias apache_restart='sudo port unload apache2 && sudo port load apache2'
-alias mysqlstart='sudo -v && sudo mysqld_safe5 &'
-alias mysqlstop='mysqladmin -u root -p shutdown'
 
 
 # =================================================
 # Remote shell logins
 # =================================================
 
-mdns_name="141530781.members.btmm.icloud.com."
-macbook="WC-Macbook.$mdns_name"
-macpro="WC-Macpro.$mdns_name"
-work="BM-PSweeney.$mdns_name"
-
+if [[ ! "$OSTYPE" =~ 'darwin' ]]; then
+  mdns_name="141530781.members.btmm.icloud.com."
+  macbook="WC-Macbook.$mdns_name"
+  macpro="WC-Macpro.$mdns_name"
+  work="BM-PSweeney.$mdns_name"
+fi
 
 # =================================================
 # Login messages
@@ -113,7 +116,7 @@ fortune -a 50% all 50% $HOME/fortune 2> /dev/null
 echo ""
 
 # Show running tmux sessions
-if [[ -z "$TMUX" && -n "`which tmux`" ]]
+if [[ -n "$TMUX" && -n "`which tmux`" ]]
 then
 	echo ":: Running tmux sessions ::"
 	tmux ls 2> /dev/null
