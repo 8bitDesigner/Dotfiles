@@ -11,16 +11,16 @@ source ~/.bashrc
 
 # First set up our terminal as xterm
 if [[ -n `find /usr/share/terminfo -name 'xterm-256color'` ]]; then
-	export TERM='xterm-256color'
+  export TERM='xterm-256color'
 elif [[ -n `find /lib/terminfo -name 'xterm-256color'` ]]; then
-	export TERM='xterm-256color'
+  export TERM='xterm-256color'
 else
-	export TERM='xterm-color'
+  export TERM='xterm-color'
 fi
 
 # Now, if we're in a tmux session, reconfigure the term now
 if [[ -n $TMUX ]]; then
-	export TERM='screen-256color'
+  export TERM='screen-256color'
 fi
 
 
@@ -30,7 +30,7 @@ fi
 
 export EDITOR=`which vim`
 
-if [[ ! "$OSTYPE" =~ 'darwin' ]]; then
+if [[ "$OSTYPE" =~ 'darwin' ]]; then
   export BROWSER=/usr/bin/open
   export VIM_APP_DIR=/Applications/MacPorts/
 fi
@@ -49,12 +49,12 @@ export CLICOLOR=1
 # Less > More
 export PAGER="less"
 export LESS="-niSRFX"
-	# n supppres line numbers
-	# i search ignores case
-	# S scroll horizontally
-	# R interpret color escape sequences
-	# F quit if one screen
-	# X no init
+  # n supppres line numbers
+  # i search ignores case
+  # S scroll horizontally
+  # R interpret color escape sequences
+  # F quit if one screen
+  # X no init
 
 # Commandline customisation
 function current { branch=`git current`; if [[ -n $branch ]]; then echo " ($branch)"; fi }
@@ -82,7 +82,7 @@ alias vi='vim -p'
 alias pine='alpine'
 alias g='git'
 
-if [[ ! "$OSTYPE" =~ 'darwin' ]]; then
+if [[ "$OSTYPE" =~ 'darwin' ]]; then
   alias port='port -uc'
   alias tree='tree -C'  # Tree with colors
   alias apachectl='sudo /opt/local/apache2/bin/apachectl'
@@ -99,7 +99,7 @@ fi
 # Remote shell logins
 # =================================================
 
-if [[ ! "$OSTYPE" =~ 'darwin' ]]; then
+if [[ "$OSTYPE" =~ 'darwin' ]]; then
   mdns_name="141530781.members.btmm.icloud.com."
   macbook="WC-Macbook.$mdns_name"
   macpro="WC-Macpro.$mdns_name"
@@ -118,6 +118,6 @@ echo ""
 # Show running tmux sessions
 if [[ -n "$TMUX" && -n "`which tmux`" ]]
 then
-	echo ":: Running tmux sessions ::"
-	tmux ls 2> /dev/null
+  echo ":: Running tmux sessions ::"
+  tmux ls 2> /dev/null
 fi
