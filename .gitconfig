@@ -43,7 +43,7 @@
 	pushup = !"git push origin `git current`"
 
 	# git curtag :: fetch the latest tag in the current repo
-	curtag = !"git fetch --tags > /dev/null && git rtag | tail -n1"
+	curtag = !"git tag | grep `date +%Y` | tail -n1"
 
 	# list tags chronologically
 	rtag = tag -l *12[a-z]
