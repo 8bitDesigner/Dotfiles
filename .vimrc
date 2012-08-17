@@ -94,7 +94,7 @@ endif
 
 
 " Search in files
-map <leader>t :Ack! 
+map <leader>t :CommandT
 
 " Pipe current document through markdown
 map <leader>m :%!multimarkdown<CR>
