@@ -6,7 +6,7 @@ let g:syntastic_jshint_config = '~/.jshintrc'
 " Pointless waste of time plugins
 let g:twitvim_count = 70
 
-" Init pathogen 
+" Init pathogen
 call pathogen#runtime_append_all_bundles()
 
 " 256 color term
@@ -20,8 +20,11 @@ colorscheme solarized
 filetype plugin indent on
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.ejs  set filetype=php
-au BufRead,BufNewFile * :call Entab(2)
-au FileType nerdtree,taglist,qf setlocal nornu
+au BufRead,BufNewFile *.md   set filetype=markdown
+au BufRead,BufNewFile * :call Whitespace()                  " Turn on space highlighting at boot
+au BufRead,BufNewFile * :call Entab(2)                      " Two spaces per tab everywhere
+au BufRead,BufNewFile /Users/dev/Sites/api/* :call Entab(4) " API uses 4 spaces per tab
+au FileType nerdtree,taglist,qf setlocal nornu              " Kill line numbers in some buffers
 
 syntax enable
 runtime macros/matchit.vim
@@ -40,7 +43,7 @@ set visualbell            " Don't yell at me
 set bs=2                  " Backspace like the good lord intended
 set imd                   " The input managerwhich seems to hate Dvorak.
 set ff=unix               " Read/Write/Breathe Unix
-set scrolloff=3           " Keep 3 lines of context around the cursor 
+set scrolloff=3           " Keep 3 lines of context around the cursor
 set clipboard=unnamed     " Use system clipboard for yank/paste
 set wildmenu              " Better edit menu navigation
 set wildmode=full,longest " Configure autocomplete list for fs navigation
@@ -64,18 +67,26 @@ function! Entab(spaces)
     set expandtab " expand <Tab> key to a:spaces
 endfunction
 
-" Highlighting trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
+" Toggle invisibles and trailing characters
+nmap <leader>l :call Whitespace()<CR>
+function! Whitespace()
+  " Set up the color for our highlight group and tab characters
+  highlight ExtraWhitespace ctermbg=red guibg=red
+  set listchars=tab:▸\ 
 
-" Show invisibles setting and toggle
-set listchars=tab:▸\ 
-set list
-nmap <leader>l :set list!<CR>
-
+  set list! " Toggle the current list setting
+  if &list == 0
+    " If list is off, hide trailing whitespace
+    syntax clear ExtraWhitespace
+  else
+    " else highlight
+    syntax match ExtraWhitespace "\s\+$" containedin=ALL
+    "au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+    "au BufEnter * match ExtraWhitespace /\s\+$/
+    "au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    "au InsertLeave * match ExtraWhiteSpace /\s\+$/
+  endif
+endfunction
 
 " Omni completion
 set ofu=syntaxcomplete#Complete " Enable syntax completion?
@@ -94,7 +105,7 @@ endif
 
 
 " Search in files
-map <leader>t :CommandT
+map <leader>t :CommandT<CR>
 
 " Pipe current document through markdown
 map <leader>m :%!multimarkdown<CR>
@@ -123,7 +134,7 @@ map <S-Left> :foldclose<CR>
 map <S-Right> :foldopen<CR>
 
 " Because I can't type worth poo
-cmap W w
+"cmap W w
 cmap Q q
 
 " Change indent continuously (Awesome)
