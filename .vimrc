@@ -80,11 +80,7 @@ function! Whitespace()
     syntax clear ExtraWhitespace
   else
     " else highlight
-    syntax match ExtraWhitespace "\s\+$" containedin=ALL
-    "au ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-    "au BufEnter * match ExtraWhitespace /\s\+$/
-    "au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    "au InsertLeave * match ExtraWhiteSpace /\s\+$/
+    syntax match ExtraWhitespace /\s\+\%#\@<!$/ containedin=ALL
   endif
 endfunction
 
@@ -134,7 +130,7 @@ map <S-Left> :foldclose<CR>
 map <S-Right> :foldopen<CR>
 
 " Because I can't type worth poo
-"cmap W w
+cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
 cmap Q q
 
 " Change indent continuously (Awesome)
