@@ -93,6 +93,27 @@ if [[ "$OSTYPE" =~ 'darwin' ]]; then
   alias mysqladmin='mysqladmin5'
 fi
 
+if [[ -d "~/Library/Application\ Support/Titanium/mobilesdk/osx/2.1.2.GA/" ]]; then
+  alias titanium="~/Library/Application\ Support/Titanium/mobilesdk/osx/2.1.2.GA/titanium.py"
+fi
+
+function in_folder {
+  cd $1 >/dev/null
+  ${@:2}
+  cd - >/dev/null
+}
+
+function git_message {
+  repo=`basename $PWD`
+  message=`git log -n1 --pretty=format:"%d %s" | perl -pe 's/HEAD, //'`
+  printf "%-10s %s\n" $repo "$message"
+}
+
+function checkout {
+  git fetch --tags
+  git co $(mint env $1 $(basename $PWD))
+}
+
 
 
 # =================================================

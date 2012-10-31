@@ -24,9 +24,6 @@
 	close = !sh -c 'git branch -d $1 && git push origin :$1' -
 	close-force = !sh -c 'git branch -D $1 && git push origin :$1' -
 
-	# git closeall :: closes all merged branches, save for master and release
-	closeall = !"for i in $(git branch | sed 's/^..//'); do if [[ $i != 'master' && $i != 'release' ]]; then git close $i; fi; done"
-
 	# git mod :: returns list of modified/added files
 	mod = !"git status --porcelain | awk '/\\s?(M|A)/ {print $2}'"
 
@@ -49,7 +46,7 @@
 	rtag = tag -l *12[a-z]
 
 	# push code directly to master
-	pullup = !"git fetch && git rebase && git pushup"
+	pullup = !"git pull --rebase && git pushup"
 
 [color "status"]
 	added = yellow
