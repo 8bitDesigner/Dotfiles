@@ -131,13 +131,8 @@ fi
 # Login messages
 # =================================================
 
-# Stupid Unix tricks
-echo ""
-fortune -a 50% all 50% $HOME/fortune 2> /dev/null
-echo ""
-
 # Show running tmux sessions
-if [[ -n "$TMUX" && -n "`which tmux`" ]]
+if [[ -n "`which tmux`" && -n `tmux ls 2> /dev/null` ]]
 then
   echo ":: Running tmux sessions ::"
   tmux ls 2> /dev/null
