@@ -54,6 +54,7 @@ set rnu                   " Relative line numbering
 set mouse=a               " Use mouse in normal and visual modes
 set mousefocus            " Follow mouse focus
 set ttymouse=xterm2       " Mouse + tmux/screen == happy
+set fillchars=fold:\ 
 
 let mapleader = ","         " Leader mapping
 let g:vimsyn_folding='af'   " Folding settings

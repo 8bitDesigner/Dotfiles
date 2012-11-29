@@ -1,3 +1,6 @@
 [submodule ".vim/bundle/vim-stylus"]
 	path = .vim/bundle/vim-stylus
 	url = git://github.com/wavded/vim-stylus.git
+[submodule ".vim/bundle/JavaScript-syntax"]
+	path = .vim/bundle/JavaScript-syntax
+	url = git@github.com:8bitDesigner/JavaScript-syntax.git
