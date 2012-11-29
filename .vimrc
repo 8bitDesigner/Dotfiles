@@ -26,7 +26,6 @@ au BufRead,BufNewFile * :call Entab(2)                      " Two spaces per tab
 au BufRead,BufNewFile /Users/dev/Sites/api/* :call Entab(4) " API uses 4 spaces per tab
 au FileType nerdtree,taglist,qf setlocal nornu              " Kill line numbers in some buffers
 
-au FileType javascript call JavaScriptFold()
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent   " Enable folding in *.coffee files
 
 syntax enable
@@ -129,6 +128,7 @@ map <leader><Down> j
 nmap ; :set invhlsearch<CR>
 
 " Folding is cool... sometimes.
+nnoremap <Space> za
 map <S-Left> :foldclose<CR>
 map <S-Right> :foldopen<CR>
 
