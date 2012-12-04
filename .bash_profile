@@ -82,6 +82,8 @@ alias vi='vim -p'
 alias pine='alpine'
 alias g='git'
 
+alias traffic='open "http://goo.gl/1iaEC"'
+
 if [[ "$OSTYPE" =~ 'darwin' ]]; then
   alias port='port -uc'
   alias tree='tree -C'  # Tree with colors
@@ -112,6 +114,7 @@ function git_message {
 function checkout {
   git fetch --tags
   git co $(mint env $1 $(basename $PWD))
+  git subup
 }
 
 
