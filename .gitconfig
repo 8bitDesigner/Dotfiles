@@ -26,6 +26,7 @@
 
 	# git mod :: returns list of modified/added files
 	mod = !"git status --porcelain | awk '/\\s?(M|A)/ {print $2}'"
+	conflicted = !"git status --porcelain | awk '/\\s?UU/ {print $2}'"
 
 	# git last [branch] :: returns SHA-1 for the last commit in the specified (or current) branch
 	last = !sh -c 'git log -1 --pretty=oneline $1 | grep -Po "^[0-9a-zA-Z]+"' -

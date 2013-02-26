@@ -27,6 +27,7 @@ au BufRead,BufNewFile /Users/dev/Sites/api/* :call Entab(4) " API uses 4 spaces 
 au FileType nerdtree,taglist,qf setlocal nornu              " Kill line numbers in some buffers
 
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent   " Enable folding in *.coffee files
+au BufNewFile,BufReadPost *.stylus setl foldmethod=indent   " Enable folding in *.stylus files
 
 syntax enable
 runtime macros/matchit.vim
@@ -129,6 +130,7 @@ map <leader><Down> j
 nmap ; :set invhlsearch<CR>
 
 " Folding is cool... sometimes.
+set foldlevel=20
 nnoremap <Space> za
 map <S-Left> :foldclose<CR>
 map <S-Right> :foldopen<CR>
