@@ -49,6 +49,10 @@
 	# push code directly to master
 	pullup = !"git pull --rebase && git pushup"
 
+  ghrepo = !git remote show origin -n | grep 'Fetch' | perl -pe 's/.*git\\@github.com://g' | perl -pe 's/.git$//'
+  url = !echo http://github.com/$(git ghrepo)
+
+
 [color "status"]
 	added = yellow
 	changed = green
