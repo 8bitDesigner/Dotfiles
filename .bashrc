@@ -1,5 +1,6 @@
 # Set up path info (add MacPorts support)
 paths="
+$HOME/.rvm/bin
 $HOME/usr/bin
 $HOME/usr/lib/python2.7/site-packages
 /opt/local/bin
