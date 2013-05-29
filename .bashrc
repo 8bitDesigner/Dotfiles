@@ -5,7 +5,8 @@ $HOME/usr/bin
 $HOME/usr/lib/python2.7/site-packages
 /opt/local/bin
 /opt/local/sbin
-/usr/local/bin"
+/usr/local/bin
+/usr/local/heroku/bin"
 
 export PATH="`echo $paths | tr ' ' ':'`:$PATH"
 
