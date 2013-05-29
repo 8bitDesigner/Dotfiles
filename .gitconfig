@@ -51,6 +51,7 @@
 
   ghrepo = !git remote show origin -n | grep 'Fetch' | perl -pe 's/.*git\\@github.com://g' | perl -pe 's/.git$//'
   url = !echo http://github.com/$(git ghrepo)
+  pr  = !echo $(git url)/pull/new/$(git current)
 
 
 [color "status"]
