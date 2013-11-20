@@ -36,7 +36,6 @@ export EDITOR=`which vim`
 
 if [[ "$OSTYPE" =~ 'darwin' ]]; then
   export BROWSER=/usr/bin/open
-  export VIM_APP_DIR=/Applications/MacPorts/
 fi
 
 # Sane history -- http://blog.sanctum.geek.nz/better-bash-history/
@@ -64,11 +63,6 @@ export LESS="-niSRFX"
 function current { branch=`git current`; if [[ -n $branch ]]; then echo " ($branch)"; fi }
 export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\[\033[01;34m\] \$\[\033[00m\] '
 export MYSQL_PS1="(\u@\h):[\d]> "
-
-# Bash completion via MacPorts
-if [ -f /opt/local/etc/bash_completion ]; then
-  . /opt/local/etc/bash_completion
-fi
 
 # Autocomplete for SSH hostnames
 complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
@@ -103,26 +97,6 @@ if [[ -d "~/Library/Application\ Support/Titanium/mobilesdk/osx/2.1.2.GA/" ]]; t
   alias titanium="~/Library/Application\ Support/Titanium/mobilesdk/osx/2.1.2.GA/titanium.py"
 fi
 
-function in_folder {
-  cd $1 >/dev/null
-  ${@:2}
-  cd - >/dev/null
-}
-
-function git_message {
-  repo=`basename $PWD`
-  message=`git log -n1 --pretty=format:"%d %s" | perl -pe 's/HEAD, //'`
-  printf "%-10s %s\n" $repo "$message"
-}
-
-function checkout {
-  git fetch --tags
-  git co $(mint env $1 $(basename $PWD))
-  git subup
-}
-
-
-
 # =================================================
 # Remote shell logins
 # =================================================
@@ -131,7 +105,6 @@ if [[ "$OSTYPE" =~ 'darwin' ]]; then
   mdns_name="141530781.members.btmm.icloud.com."
   macbook="WC-Macbook.$mdns_name"
   macpro="WC-Macpro.$mdns_name"
-  work="BM-PSweeney.$mdns_name"
 fi
 
 # =================================================
