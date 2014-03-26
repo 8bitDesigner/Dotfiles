@@ -2,6 +2,7 @@
 let g:syntastic_auto_loc_list=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_jshint_config = '~/.jshintrc'
+let g:syntastic_html_checkers=[]
 
 " Pointless waste of time plugins
 let g:twitvim_count = 70
@@ -50,7 +51,7 @@ set scrolloff=3           " Keep 3 lines of context around the cursor
 set clipboard=unnamed     " Use system clipboard for yank/paste
 set wildmenu              " Better edit menu navigation
 set wildmode=full,longest " Configure autocomplete list for fs navigation
-set directory=~/.vim/swp  " Single location for swap files
+set directory=/tmp        " Single location for swap files
 set rnu                   " Relative line numbering
 set mouse=a               " Use mouse in normal and visual modes
 set mousefocus            " Follow mouse focus
@@ -95,7 +96,7 @@ set completeopt=longest         " Show longest match, at lest one option
 if version >= 703
     " Persistent undo - http://amix.dk/blog/post/19548
     set undofile
-    set undodir=~/.vim/undo
+    set undodir=/tmp
     set undolevels=1000
     set undoreload=10000
 

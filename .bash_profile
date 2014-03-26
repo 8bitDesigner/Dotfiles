@@ -62,7 +62,11 @@ export LESS="-niSRFX"
 # Commandline customisation
 function current { branch=`git current`; if [[ -n $branch ]]; then echo " ($branch)"; fi }
 export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\[\033[01;34m\] \$\[\033[00m\] '
-export MYSQL_PS1="(\u@\h):[\d]> "
+
+# Homebrew autocompletion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
 
 # Autocomplete for SSH hostnames
 complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
@@ -80,21 +84,8 @@ alias vi='vim -p'
 alias pine='alpine'
 alias g='git'
 
-alias traffic='open "http://goo.gl/1iaEC"'
-
 if [[ "$OSTYPE" =~ 'darwin' ]]; then
-  alias port='port -uc'
   alias tree='tree -C'  # Tree with colors
-  alias apachectl='sudo /opt/local/apache2/bin/apachectl'
-  alias apache_restart='sudo port unload apache2 && sudo port load apache2'
-  alias mysqlstart='sudo -v && sudo mysqld_safe5 &'
-  alias mysqlstop='mysqladmin -u root -p shutdown'
-  alias mysql='mysql5' # Normalising port version numbers
-  alias mysqladmin='mysqladmin5'
-fi
-
-if [[ -d "~/Library/Application\ Support/Titanium/mobilesdk/osx/2.1.2.GA/" ]]; then
-  alias titanium="~/Library/Application\ Support/Titanium/mobilesdk/osx/2.1.2.GA/titanium.py"
 fi
 
 # =================================================

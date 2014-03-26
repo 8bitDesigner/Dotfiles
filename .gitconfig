@@ -53,6 +53,8 @@
   url = !echo http://github.com/$(git ghrepo)
   pr  = !echo $(git url)/pull/new/$(git current)
 
+  track = !"git branch --set-upstream-to=origin/`git current` `git current`"
+
 
 [color "status"]
 	added = yellow
