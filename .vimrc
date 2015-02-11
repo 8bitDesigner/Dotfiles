@@ -21,10 +21,10 @@ colorscheme solarized
 filetype plugin indent on
 au BufRead,BufNewFile *.json set filetype=javascript
 au BufRead,BufNewFile *.ejs  set filetype=php
+au BufRead,BufNewFile *.ejs  set filetype=php
 au BufRead,BufNewFile *.md   set filetype=markdown
-au BufRead,BufNewFile * :call Whitespace()                  " Turn on space highlighting at boot
-au BufRead,BufNewFile * :call Entab(2)                      " Two spaces per tab everywhere
-au BufRead,BufNewFile /Users/dev/Sites/api/* :call Entab(4) " API uses 4 spaces per tab
+au VimEnter,BufRead,BufNewFile * :call Whitespace()                  " Turn on space highlighting at boot
+au VimEnter,BufRead,BufNewFile * :call Entab(2)                      " Two spaces per tab everywhere
 au FileType nerdtree,taglist,qf setlocal nornu              " Kill line numbers in some buffers
 
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent   " Enable folding in *.coffee files
@@ -57,6 +57,8 @@ set mouse=a               " Use mouse in normal and visual modes
 set mousefocus            " Follow mouse focus
 set ttymouse=xterm2       " Mouse + tmux/screen == happy
 set fillchars=fold:\ 
+set splitright            " Open splits on the right
+set splitbelow            " Open splits below
 
 let mapleader = ","         " Leader mapping
 let g:vimsyn_folding='af'   " Folding settings
@@ -114,8 +116,8 @@ map <leader>m :%!multimarkdown<CR>
 
 " Let's get nerdy
 map <leader>n :NERDTreeToggle<CR>
-nmap <leader>/ :call NERDComment(0, "invert")<CR>
-vmap <leader>/ <ESC>:call NERDComment(1, "invert")<CR>
+nmap <leader>/ <Plug>CommentaryLine
+xmap <leader>/ <Plug>Commentary
 
 " Tab/window shortcuts
 map <leader>] :tabn<CR>

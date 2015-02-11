@@ -51,7 +51,7 @@
 
   ghrepo = !git remote show origin -n | grep 'Fetch' | perl -pe 's/.*git\\@github.com://g' | perl -pe 's/.git$//'
   url = !echo http://github.com/$(git ghrepo)
-  pr  = !echo $(git url)/pull/new/$(git current)
+  pr  = !echo $(git url)/compare/master...$(git current)
 
   track = !"git branch --set-upstream-to=origin/`git current` `git current`"
 
@@ -70,3 +70,6 @@
 	enabled = 1
 [credential]
 	helper = osxkeychain
+
+[push]
+  default = upstream
