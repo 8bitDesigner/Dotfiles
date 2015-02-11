@@ -61,7 +61,7 @@ export LESS="-niSRFX"
 
 # Commandline customisation
 function current { branch=`git current`; if [[ -n $branch ]]; then echo " ($branch)"; fi }
-export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\[\033[01;34m\] \$\[\033[00m\] '
+export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\n\[\033[01;34m\]\$\[\033[00m\] '
 
 # Homebrew autocompletion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
