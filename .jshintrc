@@ -1,6 +1,7 @@
-{
-  "asi":true
-, "browser":true
+{ "asi":true
+, "esnext": true
+, "expr": true
+, "node": true
 , "nonstandard":true
 , "smarttabs":true
 , "laxbreak":true
@@ -10,8 +11,18 @@
 , "eqeqeq":false
 , "eqnull":true
 , "evil":true
-, "predef":[
-      "$"
-    , "mint"
+, "predef":
+  [ "browser"
+  , "describe"
+  , "it"
+  , "beforeEach"
+  , "afterEach"
+  , "beforeAll"
+  , "afterAll"
+  , "expect"
+  , "jasmine"
+  , "protractor"
+  , "element"
+  , "by"
   ]
 }

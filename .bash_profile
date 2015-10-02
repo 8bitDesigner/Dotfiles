@@ -32,7 +32,7 @@ fi
 # Default bash stuff
 # =================================================
 
-export EDITOR=`which vim`
+export EDITOR=nvim
 
 if [[ "$OSTYPE" =~ 'darwin' ]]; then
   export BROWSER=/usr/bin/open
@@ -83,8 +83,9 @@ complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g
 # Default options
 alias ls='ls -G'      # always use colors
 alias la='ls -alsG'   # List all, with colors
-alias vim='vim -p'    # Vim should open multiple files in tabs
-alias vi='vim -p'
+alias ll='la'
+alias vim='nvim -p'    # Vim should open multiple files in tabs
+alias vi='nvim -p'
 alias pine='alpine'
 alias g='git'
 
