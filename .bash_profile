@@ -49,19 +49,23 @@ PROMPT_COMMAND='history -a; history -n'  # Record history after each command, no
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 
+
 # Less > More
 export PAGER="less"
 export LESS="-niSRFX"
-  # n supppres line numbers
-  # i search ignores case
-  # S scroll horizontally
-  # R interpret color escape sequences
-  # F quit if one screen
-  # X no init
+  # -n supppres line numbers
+  # i  search ignores case
+  # S  scroll horizontally
+  # R  interpret color escape sequences
+  # F  quit if one screen
+  # X  no init
 
 # Commandline customisation
 function current { branch=`git current`; if [[ -n $branch ]]; then echo " ($branch)"; fi }
 export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\n\[\033[01;34m\]\$\[\033[00m\] '
+
+# Autocompletion for fs-cli
+source "/usr/local/lib/node_modules/fs-cli/fs-completion.bash"
 
 # Homebrew autocompletion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then

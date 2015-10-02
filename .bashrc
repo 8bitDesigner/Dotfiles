@@ -3,7 +3,9 @@ paths="
 $HOME/.rvm/bin
 $HOME/usr/bin
 $HOME/usr/lib/python2.7/site-packages
+$HOME/.local/lib/aws/bin
 /usr/local/heroku/bin
+/usr/local/sbin
 /usr/local/bin"
 
 export PATH="`echo $paths | tr ' ' ':'`:$PATH"
