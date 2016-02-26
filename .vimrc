@@ -2,8 +2,8 @@
 let g:syntastic_auto_loc_list=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_jshint_config = '~/.jshintrc'
-let g:syntastic_scss_checkers = ['sassc']
-let g:syntastic_sass_checkers = ['sassc']
+let g:syntastic_sass_checkers = ['scss_lint']
+let g:syntastic_scss_checkers = ['scss_lint']
 " let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_html_checkers=[]
@@ -20,11 +20,12 @@ colorscheme solarized
 
 " Activate auto filetype detection
 filetype plugin indent on
-au BufRead,BufNewFile *.es6  set filetype=javascript
-au BufRead,BufNewFile *.jsx  set filetype=javascript
-au BufRead,BufNewFile *.ejs  set filetype=php
-au BufRead,BufNewFile *.md   set filetype=markdown
-au BufRead,BufNewFile *      set foldmethod=syntax
+au BufRead,BufNewFile *.es6    set filetype=javascript
+au BufRead,BufNewFile *.jsx    set filetype=javascript
+au BufRead,BufNewFile *.ejs    set filetype=php
+au BufRead,BufNewFile *.md     set filetype=markdown
+au BufRead,BufNewFile *.nghtml set filetype=html
+au BufRead,BufNewFile *        set foldmethod=syntax
 au VimEnter,BufRead,BufNewFile * :call Whitespace()         " Turn on space highlighting at boot
 au FileType nerdtree,taglist,qf setlocal nornu              " Kill line numbers in some buffers
 autocmd filetype make setlocal noexpandtab
@@ -92,6 +93,10 @@ if !has('nvim')
   set autoindent            " Enable automatic indenting for files with ft set
   set ttymouse=xterm2       " Mouse + tmux/screen == happy
   set bs=2                  " Backspace like the good lord intended
+endif
+
+if has('nvim')
+  set wildignorecase        " Ignore case on filesystem autocomplete
 endif
 
 " Toggle invisibles and trailing characters
