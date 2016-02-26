@@ -1,53 +1,53 @@
 [user]
-	name = Paul Sweeney
-	email = paul@8-bitdesign.com
+  name = Paul Sweeney
+  email = paul@8-bitdesign.com
 
 [color]
-	pager = true
-	ui = true
-	status = auto
-	branch = auto
+  pager = true
+  ui = true
+  status = auto
+  branch = auto
 
 [alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
-	lg = log
-	pom = push origin master
-	cp = cherry-pick
-	sub = submodule
-	subup = submodule update --recursive
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log
+  pom = push origin master
+  cp = cherry-pick
+  sub = submodule
+  subup = submodule update --recursive
 
-	# git close [branchname] :: deletes the branch locally and on origin
-	close = !sh -c 'git branch -d $1 && git push origin :$1' -
-	close-force = !sh -c 'git branch -D $1 && git push origin :$1' -
+  # git close [branchname] :: deletes the branch locally and on origin
+  close = !sh -c 'git branch -d $1 && git push origin :$1' -
+  close-force = !sh -c 'git branch -D $1 && git push origin :$1' -
 
-	# git mod :: returns list of modified/added files
-	mod = !"git status --porcelain | awk '/\\s?(M|A)/ {print $2}'"
-	conflicted = !"git status --porcelain | awk '/\\s?UU/ {print $2}'"
+  # git mod :: returns list of modified/added files
+  mod = !"git status --porcelain | awk '/\\s?(M|A)/ {print $2}'"
+  conflicted = !"git status --porcelain | awk '/\\s?UU/ {print $2}'"
 
-	# git last [branch] :: returns SHA-1 for the last commit in the specified (or current) branch
-	last = !sh -c 'git log -1 --pretty=oneline $1 | grep -Po "^[0-9a-zA-Z]+"' -
+  # git last [branch] :: returns SHA-1 for the last commit in the specified (or current) branch
+  last = !sh -c 'git log -1 --pretty=oneline $1 | grep -Po "^[0-9a-zA-Z]+"' -
 
-	# git glog [searchstring] [branch] :: Searches [branch] for commits matching [searchstring]
-	grep = !sh -c 'git log --pretty=oneline --reverse $2 | grep $1' -
+  # git glog [searchstring] [branch] :: Searches [branch] for commits matching [searchstring]
+  grep = !sh -c 'git log --pretty=oneline --reverse $2 | grep $1' -
 
-	# git current :: returns current branchname
-	current = !git branch 2> /dev/null | grep '\\*' | sed -e 's/\\* \\(.*\\)/\\1/'
+  # git current :: returns current branchname
+  current = !git branch 2> /dev/null | grep '\\*' | sed -e 's/\\* \\(.*\\)/\\1/'
 
-	# git pushup :: push current branch to origin (usually github)
-	pushup = !"git push origin `git current`"
+  # git pushup :: push current branch to origin (usually github)
+  pushup = !"git push origin `git current`"
 
-	# git curtag :: fetch the latest tag in the current repo
-	curtag = !"git tag | grep `date +%Y` | tail -n1"
+  # git curtag :: fetch the latest tag in the current repo
+  curtag = !"git tag | grep `date +%Y` | tail -n1"
 
-	# list tags chronologically
-	rtag = tag -l *12[a-z]
+  # list tags chronologically
+  rtag = tag -l *12[a-z]
 
-	# push code directly to master
-	pullup = !"git pull --rebase && git pushup"
+  # push code directly to master
+  pullup = !"git pull --rebase && git pushup"
 
   ghrepo = !git remote show origin -n | grep 'Fetch' | perl -pe 's/.*git\\@github.com://g' | perl -pe 's/.git$//'
   url = !echo http://github.com/$(git ghrepo)
@@ -56,25 +56,25 @@
   track = !"git branch --set-upstream-to=origin/`git current` `git current`"
 
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore
-	autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore
+  autocrlf = input
 
 [rerere]
-	enabled = 1
+  enabled = 1
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 
 [push]
   default = upstream
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
