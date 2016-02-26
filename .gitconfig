@@ -55,7 +55,6 @@
 
   track = !"git branch --set-upstream-to=origin/`git current` `git current`"
 
-
 [color "status"]
 	added = yellow
 	changed = green
@@ -68,11 +67,13 @@
 
 [rerere]
 	enabled = 1
+
 [credential]
 	helper = osxkeychain
 
 [push]
   default = upstream
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f

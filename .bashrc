@@ -14,10 +14,12 @@ mans="
 $HOME/usr/share/man
 /usr/local/share"
 
-export NODE_REPL_HISTORY_FILE=$HOME/.node_repl
+export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
 
 export MANPATH="`echo $mans | tr ' ' ':'`:$MANPATH"
 export JS_CMD=`which node`
+
+source $HOME/.env
 
 # added by travis gem
 [ -f /Users/paul/.travis/travis.sh ] && source /Users/paul/.travis/travis.sh
