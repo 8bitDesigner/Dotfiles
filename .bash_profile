@@ -18,15 +18,11 @@ if [[ -n `find /usr/share/terminfo -name 'xterm-256color'` ]]; then
   export TERM='xterm-256color'
 elif [[ -n `find /lib/terminfo -name 'xterm-256color'` ]]; then
   export TERM='xterm-256color'
+elif [[ -n $TMUX ]]; then
+  export TERM='screen-256color'
 else
   export TERM='xterm-color'
 fi
-
-# Now, if we're in a tmux session, reconfigure the term now
-if [[ -n $TMUX ]]; then
-  export TERM='screen-256color'
-fi
-
 
 # =================================================
 # Default bash stuff
@@ -38,13 +34,16 @@ if [[ "$OSTYPE" =~ 'darwin' ]]; then
   export BROWSER=/usr/bin/open
 fi
 
-# Sane history -- http://blog.sanctum.geek.nz/better-bash-history/
+# Sane history
+# http://blog.sanctum.geek.nz/better-bash-history/
+# https://github.com/mrzool/bash-sensible/
 shopt -s histappend                      # Append to .bash_history - don't rewrite
+shopt -s cmdhist                         # Save multi-line commands as one command
 unset HISTFILESIZE                       # Record fugging everything
 HISTSIZE=1000000
-HISTCONTROL=ignoreboth                   # Ignore dupe commands, and commands starting with a space
+HISTCONTROL='erasedups:ignoreboth'       # Ignore dupe commands, and commands starting with a space
 HISTIGNORE='ls:bg:fg:history:jobs'       # Ignore the output of common commands
-PROMPT_COMMAND='history -a; history -n'  # Record history after each command, not terminal close
+PROMPT_COMMAND='history -a'              # Record history after each command, not terminal close
 
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
@@ -84,7 +83,7 @@ complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g
 alias ls='ls -G'      # always use colors
 alias la='ls -alsG'   # List all, with colors
 alias ll='la'
-alias vim='nvim -p'    # Vim should open multiple files in tabs
+alias vim='nvim -p'   # Vim should open multiple files in tabs
 alias vi='nvim -p'
 alias pine='alpine'
 alias g='git'
@@ -93,15 +92,6 @@ if [[ "$OSTYPE" =~ 'darwin' ]]; then
   alias tree='tree -C'  # Tree with colors
 fi
 
-# =================================================
-# Remote shell logins
-# =================================================
-
-if [[ "$OSTYPE" =~ 'darwin' ]]; then
-  mdns_name="141530781.members.btmm.icloud.com."
-  macbook="WC-Macbook.$mdns_name"
-  macpro="WC-Macpro.$mdns_name"
-fi
 
 # =================================================
 # TMUX Nonsense
@@ -125,4 +115,4 @@ function muxwin {
   fi
 }
 
-export PROMPT_COMMAND=muxwin;
+export PROMPT_COMMAND="$PROMPT_COMMAND && muxwin"
