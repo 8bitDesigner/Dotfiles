@@ -49,9 +49,11 @@
   # push code directly to master
   pullup = !"git pull --rebase && git pushup"
 
+  defaultbranch = !"[[ -e .github-branch ]] && echo $(< .github-branch) || echo 'master'"
+
   ghrepo = !git remote show origin -n | grep 'Fetch' | perl -pe 's/.*git\\@github.com://g' | perl -pe 's/.git$//'
   url = !echo http://github.com/$(git ghrepo)
-  pr  = !echo $(git url)/compare/master...$(git current)
+  pr  = !echo $(git url)/compare/$(git defaultbranch)...$(git current)
 
   track = !"git branch --set-upstream-to=origin/`git current` `git current`"
 
