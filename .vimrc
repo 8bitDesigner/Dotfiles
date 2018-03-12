@@ -7,6 +7,8 @@ let g:syntastic_scss_checkers = ['scss_lint']
 " let g:syntastic_javascript_checkers = ['jsxhint']
 let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_html_checkers=[]
+let g:syntastic_typescript_checkers=[]
+
 
 " Init pathogen
 call pathogen#runtime_append_all_bundles()
@@ -26,6 +28,10 @@ au BufRead,BufNewFile *.ejs    set filetype=php
 au BufRead,BufNewFile *.md     set filetype=markdown
 au BufRead,BufNewFile *.nghtml set filetype=html
 au BufRead,BufNewFile *        set foldmethod=syntax
+
+au QuickFixCmdPost [^l]*.ts nested cwindow
+au QuickFixCmdPost    l*ts nested lwindow
+
 au VimEnter,BufRead,BufNewFile * :call Whitespace()         " Turn on space highlighting at boot
 au FileType nerdtree,taglist,qf setlocal nornu              " Kill line numbers in some buffers
 autocmd filetype make setlocal noexpandtab
@@ -81,6 +87,7 @@ if version >= 703
 
   " highlight line 80
   set colorcolumn=80
+  set synmaxcol=120 "" Only syntax highlight up to column 120
 endif
 
 if !has('nvim')

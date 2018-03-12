@@ -14,12 +14,12 @@ source ~/.bashrc
 # =================================================
 
 # First set up our terminal as xterm
-if [[ -n `find /usr/share/terminfo -name 'xterm-256color'` ]]; then
+if [[ -n $TMUX ]]; then
+  export TERM='screen-256color'
+elif [[ -n `find /usr/share/terminfo -name 'xterm-256color'` ]]; then
   export TERM='xterm-256color'
 elif [[ -n `find /lib/terminfo -name 'xterm-256color'` ]]; then
   export TERM='xterm-256color'
-elif [[ -n $TMUX ]]; then
-  export TERM='screen-256color'
 else
   export TERM='xterm-color'
 fi
@@ -43,7 +43,7 @@ unset HISTFILESIZE                       # Record fugging everything
 HISTSIZE=1000000
 HISTCONTROL='erasedups:ignoreboth'       # Ignore dupe commands, and commands starting with a space
 HISTIGNORE='ls:bg:fg:history:jobs'       # Ignore the output of common commands
-PROMPT_COMMAND='history -a'              # Record history after each command, not terminal close
+PROMPT_COMMAND='history -a; history -c; history -r' # Append history, clear it, and re-read
 
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
@@ -60,11 +60,11 @@ export LESS="-niSRFX"
   # X  no init
 
 # Commandline customisation
-function current { branch=`git current`; if [[ -n $branch ]]; then echo " ($branch)"; fi }
+function current {
+  branch=`git branch 2> /dev/null | awk '/\* / {print $2}'`
+  if [[ -n $branch ]]; then echo " ($branch)"; fi
+}
 export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\n\[\033[01;34m\]\$\[\033[00m\] '
-
-# Autocompletion for fs-cli
-source "/usr/local/lib/node_modules/fs-cli/fs-completion.bash"
 
 # Homebrew autocompletion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -87,6 +87,7 @@ alias vim='nvim -p'   # Vim should open multiple files in tabs
 alias vi='nvim -p'
 alias pine='alpine'
 alias g='git'
+alias ash='aws-ssh'
 
 if [[ "$OSTYPE" =~ 'darwin' ]]; then
   alias tree='tree -C'  # Tree with colors

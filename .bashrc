@@ -1,9 +1,8 @@
 # Set up path info (add MacPorts support)
 paths="
+./node_modules/.bin
 $HOME/.rvm/bin
-$HOME/usr/lib/python2.7/site-packages
-$HOME/.local/lib/aws/bin
-/usr/local/heroku/bin
+$HOME/Library/Python/2.7/bin
 /usr/local/sbin
 /usr/local/bin"
 
@@ -20,6 +19,3 @@ export MANPATH="`echo $mans | tr ' ' ':'`:$MANPATH"
 export JS_CMD=`which node`
 
 source $HOME/.env
-
-# added by travis gem
-[ -f /Users/paul/.travis/travis.sh ] && source /Users/paul/.travis/travis.sh
