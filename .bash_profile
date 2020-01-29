@@ -76,6 +76,23 @@ complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g
 
 
 # =================================================
+# Work shortcuts
+# =================================================
+
+hubble () {
+  ecs-local -c ~/Sites/fullscreen/hubble/ecs-local-config.yaml -t "$1-hubble" "${@:2}"
+}
+
+accounts () {
+  ecs-local -c ~/Sites/fullscreen/accounts/ecs-local-config.yaml -t "$1-accounts" "${@:2}"
+}
+
+earnings () {
+  ecs-local -c ~/Sites/fullscreen/earnings/ecs-local-config.yaml -t "$1-earnings" "${@:2}"
+}
+
+
+# =================================================
 # Aliases
 # =================================================
 
@@ -83,8 +100,8 @@ complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g
 alias ls='ls -G'      # always use colors
 alias la='ls -alsG'   # List all, with colors
 alias ll='la'
-alias vim='nvim -p'   # Vim should open multiple files in tabs
-alias vi='nvim -p'
+alias vim='vim -p'   # Vim should open multiple files in tabs
+alias vi='vim -p'
 alias pine='alpine'
 alias g='git'
 alias ash='aws-ssh'

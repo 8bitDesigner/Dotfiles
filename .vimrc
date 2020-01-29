@@ -1,17 +1,22 @@
-" Prep some variables for use with syntastic syntax checker
-let g:syntastic_auto_loc_list=1
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-let g:syntastic_jshint_config = '~/.jshintrc'
-let g:syntastic_sass_checkers = ['scss_lint']
-let g:syntastic_scss_checkers = ['scss_lint']
-" let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_javascript_checkers = ['standard']
-let g:syntastic_html_checkers=[]
-let g:syntastic_typescript_checkers=[]
-
-
-" Init pathogen
 call pathogen#runtime_append_all_bundles()
+
+" Just standard. Only standard
+let g:ale_linters = {'javascript': ['standard']}
+" let g:ale_completion_enabled = 1
+
+" Do not lint or fix minified files.
+" Use standard on everything, eslint on Reelio
+let g:ale_pattern_options = {
+\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+\}
+
+
+" Show quickfix window when errors occur
+let g:ale_open_list = 1 
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " 256 color term
 set t_Co=256
@@ -22,22 +27,9 @@ colorscheme solarized
 
 " Activate auto filetype detection
 filetype plugin indent on
-au BufRead,BufNewFile *.es6    set filetype=javascript
-au BufRead,BufNewFile *.jsx    set filetype=javascript
-au BufRead,BufNewFile *.ejs    set filetype=php
-au BufRead,BufNewFile *.md     set filetype=markdown
-au BufRead,BufNewFile *.nghtml set filetype=html
-au BufRead,BufNewFile *        set foldmethod=syntax
 
-au QuickFixCmdPost [^l]*.ts nested cwindow
-au QuickFixCmdPost    l*ts nested lwindow
-
-au VimEnter,BufRead,BufNewFile * :call Whitespace()         " Turn on space highlighting at boot
 au FileType nerdtree,taglist,qf setlocal nornu              " Kill line numbers in some buffers
 autocmd filetype make setlocal noexpandtab
-
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent   " Enable folding in *.coffee files
-au BufNewFile,BufReadPost *.stylus setl foldmethod=indent   " Enable folding in *.stylus files
 
 syntax enable
 runtime macros/matchit.vim
@@ -55,7 +47,7 @@ set ff=unix               " Read/Write/Breathe Unix
 set scrolloff=3           " Keep 3 lines of context around the cursor
 set clipboard=unnamed     " Use system clipboard for yank/paste
 set directory=/tmp        " Single location for swap files
-set rnu                   " Relative line numbering
+set number                " Set line numbering
 set mousefocus            " Follow mouse focus
 set fillchars=fold:\ 
 set splitright            " Open splits on the right
@@ -122,19 +114,15 @@ function! Whitespace()
   endif
 endfunction
 
+" YouCompleteMe
+map <leader>d :YcmCompleter GoTo<CR>
+map <leader>D :YcmCompleter GetDoc<CR>
+map <leader>r :YcmCompleter GoToReferences<CR>
+
 " FZF
 map <c-t> :Files<CR>
-map <leader>l :Lines<CR>
 map <leader>h :History:<CR>
 map <leader>H :Help<CR>
-
-" Tern
-let tern_show_signature_in_pum="1"
-map <leader>d :TernDefSplit<CR>
-map <leader>D :TernDocBrowse<CR>
-map <leader>r :TernRefs<CR>
-map <leader>R :TernRename<CR>
-map <leader>t :TernType<CR>
 
 " Pipe current document through markdown
 map <leader>m :%!multimarkdown<CR>
@@ -144,11 +132,10 @@ map <leader>n :NERDTreeToggle<CR>
 nmap <leader>/ <Plug>CommentaryLine
 xmap <leader>/ <Plug>Commentary
 
-" Tab/window shortcuts
+" Navigation shortcuts
 map <leader>] :tabn<CR>
 map <leader>[ :tabp<CR>
-
-" Window navigation
+nmap <leader> <C-x><C-o>
 map <leader><Left> h
 map <leader><Right> l
 map <leader><Up> k

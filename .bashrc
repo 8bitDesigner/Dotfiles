@@ -2,8 +2,8 @@
 paths="
 ./node_modules/.bin
 $HOME/.rvm/bin
-$HOME/Library/Python/2.7/bin
 /usr/local/sbin
+/usr/local/opt/python/libexec/bin
 /usr/local/bin"
 
 export PATH="`echo $paths | tr ' ' ':'`:$PATH"
@@ -13,9 +13,8 @@ mans="
 $HOME/usr/share/man
 /usr/local/share"
 
-export NODE_REPL_HISTORY_FILE=$HOME/.node_repl_history
-
 export MANPATH="`echo $mans | tr ' ' ':'`:$MANPATH"
 export JS_CMD=`which node`
 
-source $HOME/.env
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -51,7 +51,7 @@
 
   defaultbranch = !"[[ -e .github-branch ]] && echo $(< .github-branch) || echo 'master'"
 
-  ghrepo = !git remote show origin -n | grep 'Fetch' | perl -pe 's/.*git\\@github.com://g' | perl -pe 's/.git$//'
+  ghrepo = !git remote show origin -n | grep 'Fetch URL:' | perl -pe 's/.*git\\@github.com://g' | perl -pe 's/.git$//'
   url = !echo http://github.com/$(git ghrepo)
   pr  = !echo $(git url)/compare/$(git defaultbranch)...$(git current)
 
@@ -71,7 +71,7 @@
   enabled = 1
 
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
 
 [push]
   default = upstream
