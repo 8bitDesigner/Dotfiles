@@ -70,6 +70,8 @@ export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\n\[\033
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 
 # Autocomplete for SSH hostnames
 complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
@@ -78,17 +80,22 @@ complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g
 # =================================================
 # Work shortcuts
 # =================================================
+if [[ -d $HOME/Sites/fullscreen ]]; then
+  export SITES="$HOME/Sites/fullscreen"
+elif [[ -d $HOME/Sites ]]; then
+  export SITES="$HOME/Sites"
+fi
 
 hubble () {
-  ecs-local -c ~/Sites/fullscreen/hubble/ecs-local-config.yaml -t "$1-hubble" "${@:2}"
+  ecs-local -c "$SITES/hubble/ecs-local-config.yaml" -t "$1-hubble" "${@:2}"
 }
 
 accounts () {
-  ecs-local -c ~/Sites/fullscreen/accounts/ecs-local-config.yaml -t "$1-accounts" "${@:2}"
+  ecs-local -c "$SITES/accounts/ecs-local-config.yaml" -t "$1-accounts" "${@:2}"
 }
 
 earnings () {
-  ecs-local -c ~/Sites/fullscreen/earnings/ecs-local-config.yaml -t "$1-earnings" "${@:2}"
+  ecs-local -c "$SITES/earnings/ecs-local-config.yaml" -t "$1-earnings" "${@:2}"
 }
 
 
