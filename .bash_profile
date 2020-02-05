@@ -28,7 +28,7 @@ fi
 # Default bash stuff
 # =================================================
 
-export EDITOR=nvim
+export EDITOR=vim
 
 if [[ "$OSTYPE" =~ 'darwin' ]]; then
   export BROWSER=/usr/bin/open

@@ -1,6 +1,11 @@
-# Set up path info (add MacPorts support)
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
+
+# Set up path info (add Homebrew support)
 paths="
 ./node_modules/.bin
+$GOPATH/bin
+$GOROOT/bin
 $HOME/.rvm/bin
 /usr/local/sbin
 /usr/local/opt/python/libexec/bin
@@ -15,6 +20,3 @@ $HOME/usr/share/man
 
 export MANPATH="`echo $mans | tr ' ' ':'`:$MANPATH"
 export JS_CMD=`which node`
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
