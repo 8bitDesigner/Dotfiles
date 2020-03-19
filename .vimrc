@@ -1,7 +1,8 @@
 call pathogen#runtime_append_all_bundles()
 
 " Just standard. Only standard
-let g:ale_linters = {'javascript': ['standard']}
+let g:ale_linters = {'javascript': ['standard', 'tsserver'], 'javascriptreact': ['standard', 'tsserver']}
+
 " let g:ale_completion_enabled = 1
 
 " Do not lint or fix minified files.

@@ -16,3 +16,9 @@
 [submodule ".vim/bundle/fzf"]
 	path = .vim/bundle/fzf
 	url = git@github.com:junegunn/fzf.git
+[submodule ".vim/bundle/ale"]
+	path = .vim/bundle/ale
+	url = git@github.com:dense-analysis/ale.git
+[submodule ".tmux/tmux-battery"]
+	path = .tmux/tmux-battery
+	url = git@github.com:tmux-plugins/tmux-battery.git
