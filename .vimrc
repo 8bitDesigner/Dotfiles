@@ -29,8 +29,12 @@ colorscheme solarized
 " Activate auto filetype detection
 filetype plugin indent on
 
-au FileType nerdtree,taglist,qf setlocal nornu              " Kill line numbers in some buffers
+autocmd filetype  nerdtree,taglist,qf setlocal nornu " Kill line numbers in some buffers
 autocmd filetype make setlocal noexpandtab
+
+" Open NerdTree on boot if we didn't specify any buffers
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 syntax enable
 runtime macros/matchit.vim
