@@ -1,0 +1,15 @@
+# vim: set syntax=muttrc:
+
+bind generic <Up> previous-entry
+bind generic <Down> next-entry
+bind index <Right> display-message
+bind index <Left> browse-mailboxes
+
+bind pager <Up> previous-line
+bind pager <Down> next-line
+bind pager <Left> exit
+bind pager <Right> group-reply
+
+bind index <space>  collapse-thread 
+
+macro index R "<shell-escape>mbsync -a<enter>" "run mbsync to sync mail for this account"

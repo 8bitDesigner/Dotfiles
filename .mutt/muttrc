@@ -1,0 +1,40 @@
+# vim: set syntax=muttrc:
+
+# set my_server       = imap.fastmail.com
+set my_smtp_server  = smtp.fastmail.com
+set my_user         = psweeney@fastmail.fm
+set my_pass         = "`security find-internet-password -w -a 'psweeney@fastmail.fm'`"
+set from            = "paul@4ps4.com"
+set realname        = "Paul Sweeney"
+set mailcap_path 	  = ~/.mutt/mailcap
+ 
+# # Account - SMTP
+set smtp_url        = "smtp://$my_user:$my_pass@$my_smtp_server:587"
+set smtp_pass       = $my_pass
+set imap_user       = $my_user
+set imap_pass       = $my_pass
+set ssl_force_tls   = yes
+set ssl_starttls    = no
+
+# Folder config
+set folder          = "~/Mail"
+set mbox_type       = Maildir
+set spoolfile       = "+INBOX"
+set record          = "+Sent Items"
+set postponed       = "+Drafts"
+set trash           = "+Trash"
+
+mailboxes +INBOX
+mailboxes +Notifications
+mailboxes +Purchases
+mailboxes +Messages
+mailboxes +"====================="
+mailboxes "+Drafts"
+mailboxes "+Junk Mail"
+mailboxes "+Sent Items"
+mailboxes +Trash
+
+# Settings
+source ~/.mutt/settings.muttrc
+source ~/.mutt/colorscheme.muttrc
+source ~/.mutt/keybindings.muttrc

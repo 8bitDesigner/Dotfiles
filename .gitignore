@@ -8,3 +8,7 @@
 *.sw?
 .vim/undo/*
 *.his
+
+.aws
+.ssh
+.mbsyncrc

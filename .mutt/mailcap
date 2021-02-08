@@ -1,0 +1,8 @@
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+image/jpg; ~/Prefs/quicklook.sh %s jpg
+image/jpeg; ~/Prefs/quicklook.sh %s jpg
+image/pjpeg; ~/Prefs/quicklook.sh %s jpg
+image/png; ~/Prefs/quicklook.sh %s png
+image/gif; ~/Prefs/quicklook.sh %s gif
+video/mp4; ~/Prefs/quicklook.sh %s mp4
+application/pdf; ~/Prefs/quicklook.sh %s pdf

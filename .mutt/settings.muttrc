@@ -1,0 +1,43 @@
+# vim: set syntax=muttrc:
+
+set mail_check_stats                              # Poll for mailbox changes
+set sort            = threads                     # Show in threads                  
+set sort_aux        = reverse-last-date-received  # Reverse sort by date
+set pager_stop                                    # Don't advance to the next email at the end of the current
+set mark_old        = no                          # Remove the new/unread distinction
+set reply_self      = no                          # Reply to recipients, not to myself on my own msgs
+unset markers                                     # Don't use a "+" when breaking URLs to multiple lines
+set include                                       # include message in replies
+set forward_quote                                 # include message in forwards
+set collapse_unread = no                          # only collapse threads if they're fully read
+folder-hook . "push <collapse-all>\n"             # Collapse all read threads when entering a folder
+set text_flowed # ??
+set delete=yes                                    # don't ask for delete confirmation
+set confirmappend=no                              # Makes folder moves faster. 
+set status_on_top                                 # status on top, key suggestions on the bottom
+
+set query_command = "contacts2mutt %s"
+bind editor <Tab> complete-query
+
+auto_view text/html                               # Automatically run HTML emails through w3m
+
+# Sidebar settings
+set sidebar_visible
+set sidebar_short_path
+set sidebar_folder_indent
+set sidebar_width = 28
+set sidebar_divider_char = '│'
+set sidebar_indent_string = '  ''
+set sidebar_format = "%B %* (%?N?%N / ?%S)"
+
+# Formatting
+set status_chars = " *%A"
+set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
+set date_format="%b %d, %Y %H:%M"
+set index_format = "[%Z] %?X?A&-? %D  %-20.20F  %s"
+
+# Sort out how headers are displayed
+ignore *
+unignore from: to: cc: bcc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: bcc: date: subject:
