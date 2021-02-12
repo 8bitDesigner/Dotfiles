@@ -23,13 +23,13 @@ let g:deoplete#enable_at_startup = 1
 set t_Co=256
 
 " Better colour scheme
-set background=dark
 colorscheme solarized
+autocmd VimEnter * call SetTheme()
 
 " Activate auto filetype detection
 filetype plugin indent on
 
-autocmd filetype  nerdtree,taglist,qf setlocal nornu " Kill line numbers in some buffers
+autocmd filetype nerdtree,taglist,qf setlocal nornu " Kill line numbers in some buffers
 autocmd filetype make setlocal noexpandtab
 
 syntax enable
@@ -203,5 +203,14 @@ function! ToggleBG()
     set background=dark
   else
     set background=light
+  endif
+endfunction
+
+function! SetTheme()
+  let result = system('defaults read -g AppleInterfaceStyle 2>/dev/null')
+  if v:shell_error
+    set background=light
+  else
+    set background=dark
   endif
 endfunction
