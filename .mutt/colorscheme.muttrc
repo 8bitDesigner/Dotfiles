@@ -21,11 +21,11 @@ set my_green   = color2    # green
 color normal        $my_base0          default         
 color error         $my_red            default         
 color tilde         $my_base02         default         
-color message       $my_cyan           default         
+color message       $my_base02         default         
 color markers       $my_red            $my_base02
 color attachment    $my_base2          default         
 color search        $my_violet         default         
-color status        $my_base03         $my_cyan           
+color status        $my_base2          $my_cyan           
 color indicator     $my_base2          $my_violet
 color tree          $my_yellow         default                                     # arrow in threads
 
@@ -36,19 +36,20 @@ mono indicator reverse
 mono error bold
 
 # Index ----------- foreground -------- background----------------------
-color index         $my_base0           default         "~A"                        # all messages
+color index         $my_base03          default         "~A"                        # all messages
 color index         $my_green           default         "~N"                        # new messages
 color index         $my_green           default         "~U"                        # unread messages
 color index         $my_magenta         default         "~F"                        # flagged messages
-color index         $my_base01          default         "~D"                        # deleted messages
-color index         $my_base1           $my_base02      "~v~(!~N)"                  # collapsed thread with no unread
-color index         $my_green           $my_base02      "~v~(~N)"                   # collapsed thread with some unread
-color index         $my_green           $my_base02      "~N~v~(~N)"                 # collapsed thread with unread parent
+color index         $my_red             default         "~D"                        # deleted messages
+color index         $my_base02          $my_base3       "~v~(~D)"                   # collapsed thread with deletions
+color index         $my_base02          $my_base3       "~v~(!~N)"                  # collapsed thread with no unread
+color index         $my_green           $my_base3       "~v~(~N)"                   # collapsed thread with some unread
+color index         $my_green           $my_base3       "~N~v~(~N)"                 # collapsed thread with unread parent
 
 # Message Headers - foreground -------- background----------------------
-color hdrdefault    $my_base1           default 
-color header        $my_base1           default         "^(From)"
-color header        $my_base2           default         "^(Subject)"
+color hdrdefault    $my_base2           $my_base03 
+color header        $my_violet          $my_base03         "^(From)"
+color header        $my_violet          $my_base03         "^(Subject)"
 
 # Body ------------ foreground -------- background----------------------
 color quoted        $my_blue            default         
@@ -60,7 +61,7 @@ color quoted4       $my_red             default
 color signature     $my_base01          default         
 color bold          $my_base02          default         
 color underline     $my_base02          default         
-color normal        $my_base0           default         
+color normal        $my_base02          default         
 
 # URL Regex
 color body          $my_violet          default         "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"

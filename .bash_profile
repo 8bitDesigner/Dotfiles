@@ -5,11 +5,6 @@
 source ~/.bashrc
 
 # =================================================
-# Init RVM
-# =================================================
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-# =================================================
 # Colors
 # =================================================
 
@@ -23,6 +18,7 @@ elif [[ -n `find /lib/terminfo -name 'xterm-256color'` ]]; then
 else
   export TERM='xterm-color'
 fi
+
 
 # =================================================
 # Default bash stuff
@@ -64,39 +60,27 @@ function current {
   branch=`git branch 2> /dev/null | awk '/\* / {print $2}'`
   if [[ -n $branch ]]; then echo " ($branch)"; fi
 }
-export PS1='\[\033[00;32m\]\h\[\033[01;34m\] \w\[\033[00;35m\]$(current)\n\[\033[01;34m\]\$\[\033[00m\] '
+
+function jobcount {
+  jobs | wc -l | tr -d 0 | xargs
+}
+
+export PS1='\[\033[00;32m\]\h [$(jobcount)]\[\033[01;34m\] \w\[\033[00;35m\]$(current)\n\[\033[01;34m\]\$\[\033[00m\] '
 
 # Homebrew autocompletion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if type brew &>/dev/null; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+      [[ -r "$COMPLETION" ]] && source "$COMPLETION"
+    done
+  fi
 fi
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
 
 # Autocomplete for SSH hostnames
 complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
-
-
-# =================================================
-# Work shortcuts
-# =================================================
-if [[ -d $HOME/Sites/fullscreen ]]; then
-  export SITES="$HOME/Sites/fullscreen"
-elif [[ -d $HOME/Sites ]]; then
-  export SITES="$HOME/Sites"
-fi
-
-hubble () {
-  ecs-local -c "$SITES/hubble/ecs-local-config.yaml" -t "$1-hubble" "${@:2}"
-}
-
-accounts () {
-  ecs-local -c "$SITES/accounts/ecs-local-config.yaml" -t "$1-accounts" "${@:2}"
-}
-
-earnings () {
-  ecs-local -c "$SITES/earnings/ecs-local-config.yaml" -t "$1-earnings" "${@:2}"
-}
 
 
 # =================================================
@@ -140,4 +124,30 @@ function muxwin {
   fi
 }
 
-export PROMPT_COMMAND="$PROMPT_COMMAND && muxwin"
+function settheme {
+  if [[ "$(uname -s)" == "Darwin" ]]; then
+      sith() {
+          val=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+          if [[ $val == "Dark" ]]; then
+              export BAT_THEME="OneHalfDark"
+              i
+          else
+              export BAT_THEME="OneHalfLight"
+          fi
+      }
+
+      i() {
+          if [[ $ITERM_PROFILE == "Terminal" ]]; then
+              echo -ne "\033]50;SetProfile=Dark\a"
+              export ITERM_PROFILE="Dark"
+          else
+              echo -ne "\033]50;SetProfile=Terminal\a"
+              export ITERM_PROFILE="Terminal"
+          fi
+      }
+
+      sith
+  fi
+}
+
+export PROMPT_COMMAND="$PROMPT_COMMAND && muxwin && settheme"

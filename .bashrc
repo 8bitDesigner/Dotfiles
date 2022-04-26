@@ -6,7 +6,6 @@ paths="
 ./node_modules/.bin
 $GOPATH/bin
 $GOROOT/bin
-$HOME/.rvm/bin
 $HOME/Library/Python/3.7/bin
 /usr/local/sbin
 /usr/local/bin"

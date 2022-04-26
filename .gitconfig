@@ -57,6 +57,9 @@
 
   track = !"git branch --set-upstream-to=origin/`git current` `git current`"
 
+  curref = !"git log HEAD -n1 --oneline | cut -f1 -d ' '"
+  openref = !"open https://github.com/$(git ghrepo)/commit/$(git curref)"
+
 [color "status"]
   added = yellow
   changed = green
@@ -80,3 +83,5 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
+[init]
+	defaultBranch = main

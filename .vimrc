@@ -1,36 +1,48 @@
 call pathogen#runtime_append_all_bundles()
 
-" Just standard. Only standard
-let g:ale_linters = {'javascript': ['standard', 'tsserver'], 'javascriptreact': ['standard', 'tsserver']}
-
-" let g:ale_completion_enabled = 1
+let g:ale_linters = {
+\ 'json': ['jsonlint'],
+\ 'jsonc': ['jsonlint'],
+\ 'typescript': ['eslint', 'tsserver'],
+\ 'javascript': ['eslint', 'tsserver'],
+\ 'javascriptreact': ['eslint', 'tsserver'],
+\ 'typescriptreact': ['eslint', 'tsserver'],
+\ 'vue': ['volar']
+\}
 
 " Do not lint or fix minified files.
-" Use standard on everything, eslint on Reelio
 let g:ale_pattern_options = {
 \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
 \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
 \}
 
-
-" Show quickfix window when errors occur
-let g:ale_open_list = 1 
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
+let g:ale_vue_volar_executable = 'vue-language-server'
+let g:ale_open_list = 1 " Show quickfix window when errors occur
+let g:ale_keep_list_window_open = 0
+let g:ale_completion_enabled = 0
+let g:ale_set_balloons = 1
 
 " 256 color term
 set t_Co=256
 
 " Better colour scheme
-colorscheme solarized
+colorscheme one
+
 autocmd VimEnter * call SetTheme()
 
-" Activate auto filetype detection
-filetype plugin indent on
+filetype plugin indent on " Activate auto filetype detection
 
-autocmd filetype nerdtree,taglist,qf setlocal nornu " Kill line numbers in some buffers
+autocmd filetype nerdtree,taglist,qf setlocal nonumber colorcolumn= " Kill line numbers, color column in some buffers
 autocmd filetype make setlocal noexpandtab
+autocmd filetype json set filetype=json " Oof, something was setting my json filetype to cjson
+
+" Enable truecolor support when running inside of Tmux (which is to say,
+" always)
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 syntax enable
 runtime macros/matchit.vim
@@ -53,6 +65,8 @@ set mousefocus            " Follow mouse focus
 set fillchars=fold:\ 
 set splitright            " Open splits on the right
 set splitbelow            " Open splits below
+set foldmethod=syntax     " Code folding!
+set backupcopy=yes        " File watchers get fussy if this is off
 
 " Sane tabbing
 set tabstop=2
@@ -61,8 +75,9 @@ set shiftwidth=2
 set expandtab
 
 " Omni completion
-set ofu=syntaxcomplete#Complete " Enable syntax completion?
+" set ofu=syntaxcomplete#Complete " Enable syntax completion?
 set completeopt=longest         " Show longest match, at lest one option
+set omnifunc=ale#completion#OmniFunc
 
 let mapleader = ","       " Leader mapping
 let g:vimsyn_folding='af' " Folding settings
@@ -80,7 +95,7 @@ if version >= 703
 
   " highlight line 80
   set colorcolumn=80
-  set synmaxcol=120 "" Only syntax highlight up to column 120
+  set synmaxcol=180 "" Only syntax highlight up to column 120
 endif
 
 if !has('nvim')
@@ -194,7 +209,6 @@ if &term =~ '^screen'
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
 endif
-
 
 " Switch between dark and light backgrounds
 nmap \ :call ToggleBG()<CR>

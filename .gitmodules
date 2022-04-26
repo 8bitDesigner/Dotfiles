@@ -22,3 +22,21 @@
 [submodule ".tmux/tmux-battery"]
 	path = .tmux/tmux-battery
 	url = git@github.com:tmux-plugins/tmux-battery.git
+[submodule ".vim/bundle/editorconfig-vim"]
+  path = .vim/bundle/editorconfig-vim
+  url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule ".vim/bundle/gruvbox"]
+  path = .vim/bundle/gruvbox
+  url = git@github.com:morhetz/gruvbox.git
+[submodule ".vim/bundle/nerdtree"]
+  path = .vim/bundle/nerdtree
+  url = git@github.com:
+[submodule ".vim/bundle/nord"]
+  path = .vim/bundle/nord
+  url = git@github.com:
+[submodule ".vim/bundle/vim-one"]
+  path = .vim/bundle/vim-one
+  url = git@github.com:
+[submodule ".vim/bundle/vim-solarized8"]
+  path = .vim/bundle/vim-solarized8
+  url = git@github.com:
