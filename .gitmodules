@@ -31,9 +31,6 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = git@github.com:preservim/nerdtree.git
-[submodule ".vim/bundle/nord"]
-  path = .vim/bundle/nord
-  url = git@github.com:arcticicestudio/nord-vim.git
 [submodule ".vim/bundle/vim-one"]
   path = .vim/bundle/vim-one
   url = git@github.com:rakr/vim-one.git
