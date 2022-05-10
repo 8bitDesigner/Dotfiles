@@ -37,3 +37,9 @@
 [submodule ".vim/bundle/vim-solarized8"]
   path = .vim/bundle/vim-solarized8
   url = git@github.com:lifepillar/vim-solarized8.git
+[submodule ".vim/bundle/nord-vim"]
+	path = .vim/bundle/nord-vim
+	url = git@github.com:arcticicestudio/nord-vim.git
+[submodule ".vim/bundle/vim-prisma"]
+	path = .vim/bundle/vim-prisma
+	url = git@github.com:pantharshit00/vim-prisma.git
