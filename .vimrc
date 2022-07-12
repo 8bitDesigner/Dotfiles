@@ -1,3 +1,4 @@
+set nocompatible
 call pathogen#runtime_append_all_bundles()
 
 let g:ale_linters = {
@@ -20,7 +21,7 @@ let g:ale_vue_volar_executable = 'vue-language-server'
 let g:ale_open_list = 1 " Show quickfix window when errors occur
 let g:ale_keep_list_window_open = 0
 let g:ale_completion_enabled = 0
-let g:ale_set_balloons = 1
+let g:ale_hover_cursor = 0
 
 " 256 color term
 set t_Co=256
@@ -35,6 +36,16 @@ filetype plugin indent on " Activate auto filetype detection
 autocmd filetype nerdtree,taglist,qf setlocal nonumber colorcolumn= " Kill line numbers, color column in some buffers
 autocmd filetype make setlocal noexpandtab
 autocmd filetype json set filetype=json " Oof, something was setting my json filetype to cjson
+
+" In Javascriptish languages, show type definition on hover with buffer's
+" syntax highligihting
+augroup MyYCMCustom 
+  autocmd!
+  autocmd FileType json,javascript,javascriptreact,typescript,typescriptreact let b:ycm_hover = {
+    \ 'command': 'GetType',
+    \ 'syntax': &filetype
+    \ }
+augroup END
 
 " Enable truecolor support when running inside of Tmux (which is to say,
 " always)
@@ -74,13 +85,12 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-" Omni completion
-" set ofu=syntaxcomplete#Complete " Enable syntax completion?
-set completeopt=longest         " Show longest match, at lest one option
-set omnifunc=ale#completion#OmniFunc
+" Configuring YCM
+set completeopt=menu,longest,popup         " Show longest match, at lest one option
+" set completepopup=height:10,width:60,highlight:Pmenu,border:off
 
 let mapleader = ","       " Leader mapping
-let g:vimsyn_folding='af' " Folding settings
+" let g:vimsyn_folding='af' " Folding settings
 
 if has('nvim')
   set clipboard+=unnamedplus
@@ -95,7 +105,7 @@ if version >= 703
 
   " highlight line 80
   set colorcolumn=80
-  set synmaxcol=180 "" Only syntax highlight up to column 120
+  set synmaxcol=3000 "" Only syntax highlight up to column x
 endif
 
 if !has('nvim')
@@ -134,6 +144,7 @@ endfunction
 map <leader>d :YcmCompleter GoTo<CR>
 map <leader>D :YcmCompleter GetDoc<CR>
 map <leader>r :YcmCompleter GoToReferences<CR>
+map <leader>R :YcmCompleter RefactorRename 
 
 " FZF
 map <c-t> :Files<CR>
